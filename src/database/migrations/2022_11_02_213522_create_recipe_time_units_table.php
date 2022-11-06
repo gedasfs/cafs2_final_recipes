@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('recipe_time_units', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 64);
+            $table->string('name', 64)->unique();
             // $table->timestamps();
         });
     }
