@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('instruction_groups', function (Blueprint $table) {
             $table->id();
             $table->foreignId('recipe_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('name');
+            $table->string('name', 64);
             $table->timestamps();
         });
     }
