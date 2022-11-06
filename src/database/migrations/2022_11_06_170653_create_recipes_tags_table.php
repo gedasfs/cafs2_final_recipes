@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('difficulty_levels', function (Blueprint $table) {
+        Schema::create('recipes_tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 64);
+            $table->foreignId('recipe_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('tag_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
             // $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('difficulty_levels');
+        Schema::dropIfExists('recipes_tags');
     }
 };

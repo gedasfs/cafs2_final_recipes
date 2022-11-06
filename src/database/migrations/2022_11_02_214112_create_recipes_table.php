@@ -19,15 +19,15 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
 
             $table->string('name');
-            $table->text('short_description', 1024)->nullable();
+            $table->string('short_description')->nullable();
             $table->text('description')->nullable();
 
-            $table->unsignedDecimal('prep_time', 5, 2);
+            $table->float('prep_time', 5, 2);
             $table->unsignedBigInteger('prep_time_unit_id');
-            $table->unsignedDecimal('cook_time', 5, 2);
+            $table->float('cook_time', 5, 2);
             $table->unsignedBigInteger('cook_time_unit_id');
 
-            $table->tinyInteger('servings', 2);
+            $table->unsignedTinyInteger('servings');
 
             $table->foreignId('difficulty_level_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
 
@@ -36,6 +36,8 @@ return new class extends Migration
             $table->string('video_path')->nullable();
 
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 
