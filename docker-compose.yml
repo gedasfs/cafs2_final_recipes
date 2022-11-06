@@ -35,3 +35,10 @@ services:
         - 3306:3306
     env_file:
         - ./docker/.env/.env
+  
+  mailhog:
+    container_name: final-cafs2-mailhog
+    build: ./docker/mailhog 
+    ports:
+        - 8025:8025
+        - 1025:1025
