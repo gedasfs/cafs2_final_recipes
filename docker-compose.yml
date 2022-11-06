@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  nginx:
+    container_name: final-cafs2-nginx
+    build: ./docker/nginx
+    working_dir: /var/www
+    volumes:
+      - ./src:/var/www
+      - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./logs/nginx:/var/log/nginx/
+    ports:
+      - 80:80
+    depends_on:
+      - php
+
+  php:
+    container_name: final-cafs2-php
+    build: ./docker/php/
+    working_dir: /var/www
+    volumes:
+      - ./src:/var/www
+      - ./logs/php/php.log:/var/log/fpm-php.www.log
+    env_file:
+      - ./docker/.env/.env
+    depends_on:
+      - mariadb
+
+  mariadb:
+    container_name: final-cafs2-mariadb
+    build: ./docker/mysql
+    volumes:
+        - ./docker/mysql/data/mariadb:/var/lib/mysql
+    ports:
+        - 3306:3306
+    env_file:
+        - ./docker/.env/.env
