@@ -10,4 +10,14 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Favorite extends Model
 {
     use HasFactory;
+
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function favoriteable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }
