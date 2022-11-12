@@ -17,7 +17,7 @@ class RecipeTimeUnitFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->unique()->word(),
+            'name' => fake()->unique()->lexify('unit-?????'),
         ];
     }
 }
