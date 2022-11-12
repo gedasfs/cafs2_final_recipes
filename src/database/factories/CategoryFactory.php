@@ -19,8 +19,6 @@ class CategoryFactory extends Factory
         return [
             'name' => fake()->unique()->lexify('cat-?????'),
             'description' => fake()->paragraph(),
-            'image_path' => fake()->lexify('????/???/?????/????.???'),
-
         ];
     }
 }

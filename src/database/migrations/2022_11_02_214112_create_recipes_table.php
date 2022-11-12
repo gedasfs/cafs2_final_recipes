@@ -32,7 +32,6 @@ return new class extends Migration
             $table->foreignId('difficulty_level_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
 
             $table->string('ext_url')->nullable();
-            $table->string('image_path')->nullable();
             $table->string('video_path')->nullable();
 
             $table->timestamps();

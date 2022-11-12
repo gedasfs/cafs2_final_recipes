@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('lastname', 128);
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('avatar_path')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();

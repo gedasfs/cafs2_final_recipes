@@ -33,7 +33,6 @@ class RecipeFactory extends Factory
             'servings' => fake()->numberBetween(1, 20),
             'difficulty_level_id' => DifficultyLevel::factory()->create(),
             'ext_url' => fake()->url(),
-            'image_path' => fake()->lexify('????/???/?????/????.???'),
             'video_path' => fake()->lexify('????/???/?????/????.???'),
         ];
     }

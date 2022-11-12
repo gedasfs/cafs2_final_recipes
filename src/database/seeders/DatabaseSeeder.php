@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             IngredientSeeder::class,
             InstructionGroupSeeder::class,
             InstructionSeeder::class,
+            ImageSeeder::class,
         ]);
     }
 }
