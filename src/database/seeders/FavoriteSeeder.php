@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserFavorite;
+use App\Models\Favorite;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class UserFavoriteSeeder extends Seeder
+class FavoriteSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class UserFavoriteSeeder extends Seeder
      */
     public function run()
     {
-        UserFavorite::factory(10)->create();
+        Favorite::factory(10)->create();
     }
 }
