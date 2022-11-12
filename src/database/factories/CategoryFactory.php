@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->unique()->word(),
+            'name' => fake()->unique()->lexify('cat-?????'),
             'description' => fake()->paragraph(),
             'image_path' => fake()->lexify('????/???/?????/????.???'),
 

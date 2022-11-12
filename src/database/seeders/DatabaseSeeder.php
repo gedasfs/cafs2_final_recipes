@@ -22,15 +22,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            // UserSeeder::class,
-            // CategorySeeder::class,
-            // RecipeTimeUnitSeeder::class,
-            // DifficultyLevelSeeder::class,
-            // RecipeSeeder::class,
-            // TagSeeder::class,
-            // IngredientGroupSeeder::class,
-            // IngredientSeeder::class,
-            // InstructionGroupSeeder::class,
+            UserSeeder::class,
+            CategorySeeder::class,
+            RecipeTimeUnitSeeder::class,
+            DifficultyLevelSeeder::class,
+            RecipeSeeder::class,
+            TagSeeder::class,
+            IngredientGroupSeeder::class,
+            IngredientSeeder::class,
+            InstructionGroupSeeder::class,
             InstructionSeeder::class,
         ]);
     }
