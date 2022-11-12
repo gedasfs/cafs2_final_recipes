@@ -27,12 +27,12 @@ class DatabaseSeeder extends Seeder
             RecipeTimeUnitSeeder::class,
             DifficultyLevelSeeder::class,
             RecipeSeeder::class,
-            UserFavoriteSeeder::class,
             TagSeeder::class,
             IngredientGroupSeeder::class,
             IngredientSeeder::class,
             InstructionGroupSeeder::class,
             InstructionSeeder::class,
+            FavoriteSeeder::class,
             ImageSeeder::class,
         ]);
     }
