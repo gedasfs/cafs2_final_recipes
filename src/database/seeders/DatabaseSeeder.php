@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             RecipeTimeUnitSeeder::class,
             DifficultyLevelSeeder::class,
             RecipeSeeder::class,
+            UserFavoriteSeeder::class,
             TagSeeder::class,
             IngredientGroupSeeder::class,
             IngredientSeeder::class,
