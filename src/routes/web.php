@@ -14,7 +14,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+})->name('index');
+
+Route::prefix('/recipes')->name('recipes.')->group(function () {
+    Route::get('/', function() {
+        return view('recipes.index');
+    })->name('index');
+
+    Route::get('/create', function() {
+        return view('recipes.create');
+    })->name('create');
+
+
+
+});
+
+Route::prefix('/categories')->name('categories.')->group(function () {
+    Route::get('/', function() {
+        return view('categories.index');
+    })->name('index');
 });
 
 Route::get('/dashboard', function () {

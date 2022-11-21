@@ -1,0 +1,92 @@
+@import 'variables';
+@import 'bootstrap/scss/bootstrap';
+
+
+body {
+    min-width: 300px;
+    overflow: scroll;
+}
+
+// HEADER
+
+// -- NAVBAR
+.navbar-brand img {
+    width: 45px;
+    height: 45px;
+}
+
+.profile-section img {
+    width: 30px;
+    height: 30px;
+}
+
+// -- LANDING IMG
+.landing-img {
+    object-fit:cover;
+    width: 100%;
+    max-height: 200px;
+}
+
+// -- SEARCH BAR
+.searchBar {
+    position: inherit;
+    width: 100%;
+}
+
+// .shadow-search-bar, {
+//     box-shadow: none;
+// }
+
+.searchBar .btn {
+    z-index: 5;
+}
+
+
+.searchBar input {
+    box-shadow: none;
+}
+
+
+@include media-breakpoint-up(sm) {
+    .landing-img {
+        max-height: 300px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .landing-img {
+        max-height: 350px;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .landing-img {
+        max-height: 450px;
+    }
+
+    .searchBar {
+        position: absolute;
+        width: 45%;
+        right: 0;
+        top: 45%;
+        margin-right: 2rem;
+    }
+
+    .searchBar input, .searchBar input:focus {
+        box-shadow: 0 .5rem 1rem rgba($info, .33);
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .landing-img {
+        max-height: 550px;
+    }
+}
+
+@include media-breakpoint-up(xxl) {
+    .landing-img {
+        max-height: 600px;
+    }
+}
+
+// class="position-absolute w-50 end-0 top-50 me-2"
