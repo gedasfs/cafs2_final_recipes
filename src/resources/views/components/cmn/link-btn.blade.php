@@ -1,7 +1,10 @@
-@props(['notOutlined' => false])
+@props([
+    'outlined' => false,
+    'color' => 'primary'
+])
 
 <a {{ $attributes
-    ->class(['btn', 'btn-outline-primary' => !$notOutlined, 'btn-primary' => $notOutlined, 'rounded-5', 'px-5', 'px-lg-4'])
+    ->class(['rounded-5', 'btn', 'btn-' . ($outlined ? 'outline-' : '') . $color])
     ->merge(['href' => '#']) }}>
 {{ $slot }}
 </a>

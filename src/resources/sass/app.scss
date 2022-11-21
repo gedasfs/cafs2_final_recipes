@@ -5,6 +5,7 @@
 body {
     min-width: 300px;
     overflow: scroll;
+    margin: 0 5px;
 }
 
 // HEADER
@@ -24,7 +25,7 @@ body {
 .landing-img {
     object-fit:cover;
     width: 100%;
-    max-height: 200px;
+    max-height: 250px;
 }
 
 // -- SEARCH BAR
@@ -32,10 +33,6 @@ body {
     position: inherit;
     width: 100%;
 }
-
-// .shadow-search-bar, {
-//     box-shadow: none;
-// }
 
 .searchBar .btn {
     z-index: 5;
@@ -46,6 +43,28 @@ body {
     box-shadow: none;
 }
 
+// CARD
+.card {
+    max-width: 100%;
+}
+
+.card-img {
+    object-fit:cover;
+    height: 100%;
+    max-height: 300px;
+}
+
+.btn-fav {
+    fill: currentColor;
+}
+
+.btn-fav-filled {
+    fill: $danger;
+}
+
+.border-vertical {
+    border-right: 1px solid $primary;
+}
 
 @include media-breakpoint-up(sm) {
     .landing-img {
@@ -75,6 +94,12 @@ body {
     .searchBar input, .searchBar input:focus {
         box-shadow: 0 .5rem 1rem rgba($info, .33);
     }
+
+    .card-img {
+        object-fit:cover;
+        height: 100%;
+        max-height: 500px;
+    }
 }
 
 @include media-breakpoint-up(xl) {
@@ -88,5 +113,3 @@ body {
         max-height: 600px;
     }
 }
-
-// class="position-absolute w-50 end-0 top-50 me-2"

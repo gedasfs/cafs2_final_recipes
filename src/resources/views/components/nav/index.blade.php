@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid justify-content-end">
-        <div class="navbar-brand ms-2 ms-lg-5">
+        <a href="{{ route('index') }}" class="navbar-brand ms-2 ms-lg-5">
             <img src={{ asset('images/navbar/navbar-brand.png') }} alt="navbar-brand">
-        </div>
+        </a>
 
     {{-- Should not be displayed when user is logged OUT --}}
         <x-nav.user class="d-lg-none">User</x-nav.user>
@@ -39,7 +39,7 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><x-cmn.link class="dropdown-item">Nustatymai</x-cmn.link></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><x-cmn.link-btn>Atsijungti</x-cmn.link-btn></li>
+                                <li><x-cmn.link-btn class="px-3">Atsijungti</x-cmn.link-btn></li>
                             </ul>
                         </x-slot:dropdownMenu>
                     </x-nav.nav-link>
