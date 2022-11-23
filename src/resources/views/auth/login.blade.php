@@ -1,57 +1,30 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-layouts.main>
+    <div class="d-flex justify-content-center">
+        <x-auth.auth-card>
+            <x-slot:header class="py-3 text-center">Prisijungimas</x-slot:header>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+            <x-auth.auth-session-status :status="session('status')" />
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+            <div class="m-2">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
+                    <x-cmn.floating-input size="50" name="email" type="email" id="email">El. paštas</x-cmn.floating-input>
+                    <x-cmn.floating-input size="50" name="password" type="password" id="password">Slaptažodis</x-cmn.floating-input>
+                    <x-cmn.checkbox id="rememberMe" name="remember">Prisiminti mane</x-cmn.checkbox>
+                    <div class="text-end mt-3">
+                        <x-cmn.link-btn class="px-3">Prisijungti</x-cmn.link-btn>
+                    </div>
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <div class="d-flex flex-column flex-sm-row align-items-end justify-content-between mt-4 gap-2">
+                        @if (Route::has('password.request'))
+                            <x-cmn.link class="order-sm-1" href="{{ route('auth.password.request') }}">Priminti slaptažodį?</x-cmn.link>
+                        @endif
+                        <x-cmn.link class="order-sm-1">Registruotis?</x-cmn.link>
+                    </div>
+                </form>
             </div>
+        </x-auth.auth-card>
+    </div>
+</x-layouts.main>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>

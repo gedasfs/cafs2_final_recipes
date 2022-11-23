@@ -1,35 +1,20 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-layouts.main>
+    <div class="d-flex justify-content-center">
+        <x-auth.auth-card>
+            <x-slot:header class="py-3 text-center">Patvirtinimas</x-slot:header>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
-        </div>
+            <p>Prieš tęsiant, įveskite slaptažodį.</p>
 
-        <form method="POST" action="{{ route('password.confirm') }}">
-            @csrf
+            <div class="m-2">
+                <form method="POST" action="{{ route('password.confirm') }}">
+                    @csrf
 
-            <!-- Password -->
-            <div>
-                <x-input-label for="password" :value="__('Password')" />
+                    <x-cmn.floating-input size="50" name="password" type="password" id="password">Slapažodis</x-cmn.floating-input>
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    <x-cmn.link class="order-sm-0">Patvirtinti</x-cmn.link>
+                </form>
             </div>
+        </x-auth.auth-card>
+    </div>
+</x-layouts.main>
 
-            <div class="flex justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Confirm') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>

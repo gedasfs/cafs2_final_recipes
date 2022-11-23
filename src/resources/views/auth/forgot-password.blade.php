@@ -1,35 +1,25 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-layouts.main>
+    <div class="d-flex justify-content-center">
+        <x-auth.auth-card>
+            <x-slot:header class="py-3 text-center">Slaptažodžio priminimas</x-slot:header>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+            <p class="card-text">Įveskite registracijos metu naudotą el. paštą. Šiuo el. paštu išsiųsime slapažodžio atstatymo nuorodą.</p>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+            <x-auth.auth-session-status :status="session('status')" />
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+            <div class="m-2">
+                <form method="POST" action="{{ route('password.email') }}">
+                    @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
+                    <x-cmn.floating-input size="50" name="email" type="email" id="email">El. paštas</x-cmn.floating-input>
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    <div class="text-end mt-3">
+                        <x-cmn.link-btn class="px-3">Siųsti nuorodą</x-cmn.link-btn>
+                    </div>
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </form>
             </div>
+        </x-auth.auth-card>
+    </div>
+</x-layouts.main>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>

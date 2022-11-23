@@ -29,6 +29,10 @@ Route::prefix('/auth')->name('auth.')->group(function() {
     Route::get('/register', function() {
         return view('authorization.register');
     })->name('register');
+
+    Route::get('/forgot-password', function() {
+        return view('authorization.forgot-password');
+    })->name('password.request');
 });
 
 Route::prefix('/recipes')->name('recipes.')->group(function () {
