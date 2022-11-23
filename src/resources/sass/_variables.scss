@@ -4,11 +4,8 @@ $secondary: #7C8494;
 $light: #F8FAFB;
 $info: #FBD791;
 
-$utilities: (
-    "width": (
-        property: width,
-        class: w,
-        values: (
+$percent-values: (
+            0: 0,
             5: 5%,
             10: 10%,
             15: 15%,
@@ -30,7 +27,33 @@ $utilities: (
             95: 95%,
             100: 100%,
             auto: auto
-        )
+);
+
+$utilities: (
+    "width": (
+        property: width,
+        class: w,
+        values: $percent-values
+    ),
+    "top": (
+        property: top,
+        class: top,
+        values: $percent-values
+    ),
+    "bottom": (
+        property: bottom,
+        class: bottom,
+        values: $percent-values
+    ),
+    "start": (
+        property: left,
+        class: start,
+        values: $percent-values
+    ),
+    "end": (
+        property: right,
+        class: end,
+        values: $percent-values
     ),
 )
 

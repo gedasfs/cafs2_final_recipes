@@ -28,20 +28,12 @@ body {
     max-height: 250px;
 }
 
-// -- SEARCH BAR
-.searchBar {
-    position: inherit;
-    width: 100%;
-}
 
+// -- SEARCH BAR
 .searchBar .btn {
     z-index: 5;
 }
 
-
-.searchBar input {
-    box-shadow: none;
-}
 
 // CARD
 .card {
@@ -83,16 +75,15 @@ body {
         max-height: 450px;
     }
 
-    .searchBar {
+    .search-bar-on-img {
         position: absolute;
         width: 45%;
         right: 0;
         top: 45%;
         margin-right: 2rem;
-    }
-
-    .searchBar input, .searchBar input:focus {
-        box-shadow: 0 .5rem 1rem rgba($info, .33);
+        & input, & input:focus {
+            box-shadow: 0 .5rem 1rem rgba($info, .33);
+        }
     }
 
     .card-img {
