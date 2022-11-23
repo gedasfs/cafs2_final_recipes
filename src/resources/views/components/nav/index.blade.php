@@ -4,9 +4,9 @@
             <img src={{ asset('images/navbar/navbar-brand.png') }} alt="navbar-brand">
         </a>
 
-    {{-- Should not be displayed when user is logged OUT --}}
-        <x-nav.user class="d-lg-none">User</x-nav.user>
-    {{-- ./ --}}
+        {{-- Should not be displayed when user is logged OUT --}}
+        {{-- <x-nav.user class="d-lg-none">User</x-nav.user> --}}
+        {{-- ./ --}}
 
         <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,11 +18,11 @@
                 <x-nav.nav-link href="{{ route('recipes.index') }}">Receptai</x-nav.nav-link>
                 <x-nav.nav-link href="{{ route('categories.index') }}">Kategorijos</x-nav.nav-link>
                 <x-nav.nav-link href="{{ route('recipes.create') }}" class="ms-lg-3">Kurti receptą</x-nav.nav-link>
+                <li><hr class="divider m-0"></li>
             </ul>
 
-            <ul class="navbar-nav profile-section me-lg-5">
-                <li><hr class="divider m-0"></li>
-        {{-- Should not be displayed when user is logged OUT --}}
+            {{-- Should not be displayed when user is logged OUT --}}
+            {{-- <ul class="navbar-nav profile-section me-lg-5">
                 <li class="nav-item align-self-center d-none d-lg-inline-block fs-6"><x-nav.user>User</x-nav.user></li>
                     <x-nav.nav-link isDropdown class="d-flex justify-content-center align-items-center" href="#profile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="d-inline-block d-lg-none">Mano profilis</span>
@@ -39,23 +39,24 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><x-cmn.link class="dropdown-item">Nustatymai</x-cmn.link></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><x-cmn.link-btn class="px-3">Atsijungti</x-cmn.link-btn></li>
+                                <li><x-nav.nav-link-btn class="">Atsijungti</x-nav.nav-link-btn></li>
                             </ul>
                         </x-slot:dropdownMenu>
                     </x-nav.nav-link>
                 </li>
-        {{-- ./ --}}
-
-        {{-- Should not be displayed when user is logged IN --}}
-                {{-- <li class="nav-item align-self-center ms-0 my-2 ms-lg-4 my-lg-0">
-                    <a class="btn btn-primary rounded-5 px-5 px-lg-4 py-2 btn-inverted" href="#">Log in/Sign up</a>
-                </li> --}}
-                {{-- <x-nav.nav-link-btn class="fs-5">
+            </ul> --}}
+            {{-- Should not be displayed when user is logged IN --}}
+            <div class="d-flex flex-row gap-2 justify-content-center navbar-nav">
+                <x-nav.nav-link-btn outlined href="{{ route('register') }}">
+                    Test Login
+                </x-nav.nav-link-btn>
+                <x-nav.nav-link-btn outlined href="{{ route('auth.register') }}">
+                    Registruotis
+                </x-nav.nav-link-btn>
+                <x-nav.nav-link-btn href="{{ route('auth.login') }}">
                     Prisijungti
-                </x-nav.nav-link-btn> --}}
-        {{-- ./ --}}
-
-            </ul>
+                </x-nav.nav-link-btn>
+            </div>
         </div>
     </div>
 </nav>

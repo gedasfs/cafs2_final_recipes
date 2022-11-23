@@ -17,6 +17,20 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::prefix('/auth')->name('auth.')->group(function() {
+    Route::get('/', function() {
+        return redirect()->route('auth.login');
+    });
+
+    Route::get('/login', function() {
+        return view('authorization.login');
+    })->name('login');
+
+    Route::get('/register', function() {
+        return view('authorization.register');
+    })->name('register');
+});
+
 Route::prefix('/recipes')->name('recipes.')->group(function () {
     Route::get('/', function() {
         return view('recipes.index');
