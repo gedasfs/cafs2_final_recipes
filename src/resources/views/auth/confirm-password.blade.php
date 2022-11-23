@@ -11,7 +11,7 @@
 
                     <x-cmn.floating-input size="50" name="password" type="password" id="password">Slapažodis</x-cmn.floating-input>
 
-                    <x-cmn.link class="order-sm-0">Patvirtinti</x-cmn.link>
+                    <x-cmn.btn type="submit">Patvirtinti</x-cmn.btn>
                 </form>
             </div>
         </x-auth.auth-card>

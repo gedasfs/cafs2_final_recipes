@@ -17,23 +17,23 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::prefix('/auth')->name('auth.')->group(function() {
-    Route::get('/', function() {
-        return redirect()->route('auth.login');
-    });
+// Route::prefix('/auth')->name('auth.')->group(function() {
+//     Route::get('/', function() {
+//         return redirect()->route('auth.login');
+//     });
 
-    Route::get('/login', function() {
-        return view('authorization.login');
-    })->name('login');
+//     Route::get('/login', function() {
+//         return view('authorization.login');
+//     })->name('login');
 
-    Route::get('/register', function() {
-        return view('authorization.register');
-    })->name('register');
+//     Route::get('/register', function() {
+//         return view('authorization.register');
+//     })->name('register');
 
-    Route::get('/forgot-password', function() {
-        return view('authorization.forgot-password');
-    })->name('password.request');
-});
+//     Route::get('/forgot-password', function() {
+//         return view('authorization.forgot-password');
+//     })->name('password.request');
+// });
 
 Route::prefix('/recipes')->name('recipes.')->group(function () {
     Route::get('/', function() {
@@ -42,7 +42,7 @@ Route::prefix('/recipes')->name('recipes.')->group(function () {
 
     Route::get('/create', function() {
         return view('recipes.create');
-    })->name('create');
+    })->name('create')->middleware(['auth', 'verified']);
 
 
 
@@ -54,8 +54,8 @@ Route::prefix('/categories')->name('categories.')->group(function () {
     })->name('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

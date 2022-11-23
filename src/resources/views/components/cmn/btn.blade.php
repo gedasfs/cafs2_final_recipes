@@ -3,9 +3,9 @@
     'color' => 'primary'
 ])
 
-<a {{ $attributes
+<button {{ $attributes
     ->class(['rounded-5', 'btn', 'btn-' . ($outlined ? 'outline-' : '') . $color])
-    ->merge(['href' => '#']) }}
+    ->merge(['type' => 'button']) }}
 >
     {{ $slot }}
-</a>
+</button>

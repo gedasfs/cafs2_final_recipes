@@ -17,7 +17,7 @@
                     @csrf
 
                     <div class="text-end mt-3">
-                        <x-cmn.link-btn class="px-3">Siųsti nuorodą iš naujo</x-cmn.link-btn>
+                        <x-cmn.btn type="submit" class="px-3">Siųsti nuorodą iš naujo</x-cmn.btn>
                     </div>
 
                 </form>
