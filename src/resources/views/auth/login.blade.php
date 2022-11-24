@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <x-auth.auth-card>
+    <x-cmn.card>
         <x-slot:header class="py-3 text-center">Prisijungimas</x-slot:header>
 
         <x-auth.auth-session-status :status="session('status')" />
@@ -32,6 +32,6 @@
                 </div>
             </form>
         </div>
-    </x-auth.auth-card>
+    </x-cmn.card>
 </x-layouts.main>
 

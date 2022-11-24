@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <x-auth.auth-card>
+    <x-cmn.card>
         <x-slot:header class="py-3 text-center">Registracija</x-slot:header>
 
         <div class="m-2">
@@ -9,11 +9,11 @@
                 @error('firstname')
                     <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                 @enderror
-                <x-cmn.floating-input size="50" name="firstname" type="text" id="firstname" :value="old('firstname')" class="{{ $errors->first('firstname') ? 'is-invalid' : '' }}">Vardas</x-cmn.floating-input>
+                <x-cmn.floating-input size="50" name="firstname" id="firstname" :value="old('firstname')" class="{{ $errors->first('firstname') ? 'is-invalid' : '' }}">Vardas</x-cmn.floating-input>
                 @error('lastname')
                     <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                 @enderror
-                <x-cmn.floating-input size="50" name="lastname" type="text" id="lastname" :value="old('lastname')" class="{{ $errors->first('lastname') ? 'is-invalid' : '' }}">Pavardė</x-cmn.floating-input>
+                <x-cmn.floating-input size="50" name="lastname" id="lastname" :value="old('lastname')" class="{{ $errors->first('lastname') ? 'is-invalid' : '' }}">Pavardė</x-cmn.floating-input>
 
                 @error('email')
                     <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
@@ -39,6 +39,6 @@
                 </div>
             </form>
         </div>
-    </x-auth.auth-card>
+    </x-cmn.card>
 </x-layouts.main>
 

@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <x-auth.auth-card>
+    <x-cmn.card>
         <x-slot:header class="py-3 text-center">Naujo slaptažodžio nustatymas</x-slot:header>
 
         <div class="m-2">
@@ -29,6 +29,6 @@
                 </div>
             </form>
         </div>
-    </x-auth.auth-card>
+    </x-cmn.card>
 </x-layouts.main>
 

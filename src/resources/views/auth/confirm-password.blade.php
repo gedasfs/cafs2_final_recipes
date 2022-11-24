@@ -1,6 +1,6 @@
 <x-layouts.main>
 
-        <x-auth.auth-card>
+        <x-cmn.card>
             <x-slot:header class="py-3 text-center">Patvirtinimas</x-slot:header>
 
             <p>Prieš tęsiant, įveskite slaptažodį.</p>
@@ -17,7 +17,7 @@
                     <x-cmn.btn type="submit">Patvirtinti</x-cmn.btn>
                 </form>
             </div>
-        </x-auth.auth-card>
+        </x-cmn.card>
 
 </x-layouts.main>
 

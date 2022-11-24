@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <x-auth.auth-card>
+    <x-cmn.card>
         <x-slot:header class="py-3 text-center">El. pašto patvirtinimas</x-slot:header>
 
         <p class="card-text">Ačiū, kad užsiregistravote. Prieš tęsiant, patvirtinkite el. pašto adresą.</p>
@@ -7,7 +7,7 @@
 
         @if (session('status') == 'verification-link-sent')
             <p class="card-text text-success">
-                Jūsų el. paštu jau buvo išsiųsta el. pašto patvirtinimo nuoroda.
+                El. pašto patvirtinimo nuoroda išsiųsta.
             </p>
         @endif
 
@@ -21,6 +21,6 @@
 
             </form>
         </div>
-    </x-auth.auth-card>
+    </x-cmn.card>
 </x-layouts.main>
 

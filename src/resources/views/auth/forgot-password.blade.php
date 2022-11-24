@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <x-auth.auth-card>
+    <x-cmn.card>
         <x-slot:header class="py-3 text-center">Slaptažodžio priminimas</x-slot:header>
 
         <p class="card-text">Įveskite registracijos metu naudotą el. paštą. Šiuo el. paštu išsiųsime slaptažodžio atstatymo nuorodą.</p>
@@ -21,6 +21,6 @@
 
             </form>
         </div>
-    </x-auth.auth-card>
+    </x-cmn.card>
 </x-layouts.main>
 
