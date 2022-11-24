@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <div class="d-flex justify-content-center">
+
         <x-auth.auth-card>
             <x-slot:header class="py-3 text-center">Patvirtinimas</x-slot:header>
 
@@ -9,12 +9,15 @@
                 <form method="POST" action="{{ route('password.confirm') }}">
                     @csrf
 
-                    <x-cmn.floating-input size="50" name="password" type="password" id="password">Slapažodis</x-cmn.floating-input>
+                    @error('password')
+                        <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
+                    @enderror
+                    <x-cmn.floating-input size="50" name="password" type="password" id="password" class="{{ $errors->first('password') ? 'is-invalid' : '' }}">Slapažodis</x-cmn.floating-input>
 
                     <x-cmn.btn type="submit">Patvirtinti</x-cmn.btn>
                 </form>
             </div>
         </x-auth.auth-card>
-    </div>
+
 </x-layouts.main>
 
