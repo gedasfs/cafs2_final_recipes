@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\RecipeTimeUnit;
@@ -41,8 +42,18 @@ Route::get('/', function () {
 
 Route::prefix('/recipes')->name('recipes.')->group(function () {
     Route::get('/', function() {
-        return view('recipes.index');
+        $recipes = Recipe::paginate(10);
+        $timeUnits = RecipeTimeUnit::all();
+        $difficultyLevels = DifficultyLevel::all();
+
+        return view('recipes.index', compact('recipes', 'timeUnits', 'difficultyLevels'));
     })->name('index');
+
+    Route::get('/{recipe}', function(Recipe $recipe) {
+        // $timeUnits = RecipeTimeUnit::all();
+
+        return view('recipes.show', compact('recipe'));
+    })->name('show');
 
     Route::get('/create', function() {
 
