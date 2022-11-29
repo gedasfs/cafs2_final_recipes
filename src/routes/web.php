@@ -53,12 +53,6 @@ Route::prefix('/recipes')->name('recipes.')->group(function () {
         return view('recipes.index', compact('recipes', 'timeUnits', 'difficultyLevels'));
     })->name('index');
 
-    Route::get('/{recipe}', function(Recipe $recipe) {
-        // $timeUnits = RecipeTimeUnit::all();
-
-        return view('recipes.show', compact('recipe'));
-    })->name('show');
-
     Route::get('/create', function() {
 
         $categories = Category::all();
@@ -72,7 +66,11 @@ Route::prefix('/recipes')->name('recipes.')->group(function () {
         dd($request);
     })->name('store');
 
+    Route::get('/{recipe}', function(Recipe $recipe) {
+        // $timeUnits = RecipeTimeUnit::all();
 
+        return view('recipes.show', compact('recipe'));
+    })->name('show');
 
 });
 
