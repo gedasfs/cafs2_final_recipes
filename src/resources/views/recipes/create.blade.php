@@ -73,41 +73,29 @@
                     <x-slot:title>Gaminimo laikas, porcijų kiekis</x-slot:title>
 
                     <div class="row mb-3 mb-md-0">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-3">
                             @error('prep_time')
                                 <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                             @enderror
-                            <x-cmn.floating-input type="number" name="prep_time" id="prepTime" class="{{ $errors->first('prep_time') ? 'is-invalid' : '' }}">Paruošimo laikas</x-cmn.floating-input>
+                            <x-cmn.floating-input name="prep_time" id="prepTime" class="{{ $errors->first('prep_time') ? 'is-invalid' : '' }}">Paruošimo laikas</x-cmn.floating-input>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-3">
+                            @error('cook_time')
+                                <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
+                            @enderror
+                            <x-cmn.floating-input name="cook_time" id="cookTime" class="{{ $errors->first('cook_time') ? 'is-invalid' : '' }}">Gaminimo laikas</x-cmn.floating-input>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            @error('total_time')
+                                <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
+                            @enderror
+                            <x-cmn.floating-input name="total_time" id="totalTime" class="{{ $errors->first('total_time') ? 'is-invalid' : '' }}">Viso laikas</x-cmn.floating-input>
+                        </div>
+                        <div class="col-12 col-md-3">
                             @error('prep_time_unit_id')
                                 <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                             @enderror
                             <x-cmn.floating-select name="prep_time_unit_id" id="prepTimeUnitId" class="{{ $errors->first('prep_time_unit_id') ? 'is-invalid' : '' }}">
-                                Laiko vienetas
-                                <x-slot:firstSelectName>Pasirinkite vnt...</x-slot:firstSelectName>
-                                <x-slot:options>
-                                    @foreach ($timeUnits as $unit)
-                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                                    @endforeach
-                                </x-slot:options>
-                            </x-cmn.floating-select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3 mb-md-0">
-                        <div class="col-12 col-md-6">
-                            @error('cook_time')
-                                <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
-                            @enderror
-                            <x-cmn.floating-input type="number" name="cook_time" id="cookTime" class="{{ $errors->first('cook_time') ? 'is-invalid' : '' }}">Gaminimo laikas</x-cmn.floating-input>
-                        </div>
-
-                        <div class="col-12 col-md-6">
-                            @error('cook_time_unit_id')
-                                <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
-                            @enderror
-                            <x-cmn.floating-select name="cook_time_unit_id" id="cookTimeUnitId" class="{{ $errors->first('cook_time_unit_id') ? 'is-invalid' : '' }}">
                                 Laiko vienetas
                                 <x-slot:firstSelectName>Pasirinkite vnt...</x-slot:firstSelectName>
                                 <x-slot:options>

@@ -6,7 +6,7 @@
                 <div class="col-12 col-md-6 mb-3">
                     <x-cmn.card-recipe :id="$recipe->id">
                         @php
-                            $timeUnit = $timeUnits->first(fn($value, $key) => $value->id == $recipe->cook_time_unit_id);
+                            $timeUnit = $timeUnits->first(fn($value, $key) => $value->id == $recipe->recipe_time_unit_id);
                             $difficultyLevel = $difficultyLevels->first(fn($value, $key) => $value->id == $recipe->difficulty_level_id)
                         @endphp
 

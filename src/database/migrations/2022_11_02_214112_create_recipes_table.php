@@ -22,10 +22,13 @@ return new class extends Migration
             $table->string('short_description')->nullable();
             $table->text('description')->nullable();
 
-            $table->float('prep_time', 5, 2);
-            $table->unsignedBigInteger('prep_time_unit_id');
-            $table->float('cook_time', 5, 2);
-            $table->unsignedBigInteger('cook_time_unit_id');
+            $table->string('prep_time');
+            // $table->unsignedBigInteger('prep_time_unit_id');
+            $table->string('cook_time');
+            $table->string('total_time');
+            // $table->unsignedBigInteger('cook_time_unit_id');
+            $table->foreignId('recipe_time_unit_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
+
 
             $table->unsignedTinyInteger('servings');
 
