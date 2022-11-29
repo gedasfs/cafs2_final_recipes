@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="d-flex">
-                    <x-cmn.link-btn-arrow-b href="{{ route('recipes.show', $id) }}" outlined class="ms-auto"/>
+                    <x-cmn.link-btn-arrow-e href="{{ route('recipes.show', $id) }}" outlined class="ms-auto"/>
                 </div>
             </div>
         </div>
