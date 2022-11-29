@@ -20,10 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $recipes = Recipe::latest()->take(4)->get();
-    $timeUnits = RecipeTimeUnit::all();
-    $difficultyLevels = DifficultyLevel::all();
 
-    return view('index', compact('recipes', 'timeUnits', 'difficultyLevels'));
+    return view('index', compact('recipes'));
 })->name('index');
 
 // Route::prefix('/auth')->name('auth.')->group(function() {
@@ -47,19 +45,13 @@ Route::get('/', function () {
 Route::prefix('/recipes')->name('recipes.')->group(function () {
     Route::get('/', function() {
         $recipes = Recipe::paginate(10);
-        $timeUnits = RecipeTimeUnit::all();
-        $difficultyLevels = DifficultyLevel::all();
 
-        return view('recipes.index', compact('recipes', 'timeUnits', 'difficultyLevels'));
+        return view('recipes.index', compact('recipes'));
     })->name('index');
 
     Route::get('/create', function() {
 
-        $categories = Category::all();
-        $timeUnits = RecipeTimeUnit::all();
-        $difficultyLevels = DifficultyLevel::all();
-
-        return view('recipes.create', compact('categories', 'timeUnits', 'difficultyLevels'));
+        return view('recipes.create');
     })->name('create')->middleware(['auth', 'verified']);
 
     Route::post('/store', function(Request $request) {
