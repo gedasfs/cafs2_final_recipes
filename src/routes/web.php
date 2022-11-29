@@ -52,7 +52,9 @@ Route::prefix('/recipes')->name('recipes.')->group(function () {
 
 Route::prefix('/categories')->name('categories.')->group(function () {
     Route::get('/', function() {
-        return view('categories.index');
+        $categories = Category::paginate(12);
+
+        return view('categories.index', compact('categories'));
     })->name('index');
 });
 

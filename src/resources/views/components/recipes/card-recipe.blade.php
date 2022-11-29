@@ -1,4 +1,4 @@
-@props(['id'])
+@props(['recipeId'])
 
 <div class="card mb-3 shadow h-100">
     <div class="row g-0 h-100">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-12 col-xl-7 col-xxl-8">
             <div class="card-body d-flex flex-column h-100 justify-content-between">
-                <x-cmn.link href="{{ route('recipes.show', $id) }}">
+                <x-cmn.link href="{{ route('recipes.show', $recipeId) }}">
                     <h4 class="card-title text-primary">{{ $name }}</h4>
                 </x-cmn.link>
                 <p class="card-text text-secondary">{{ $shortDescription }}</p>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="d-flex">
-                    <x-cmn.link-btn-arrow-e href="{{ route('recipes.show', $id) }}" outlined class="ms-auto"/>
+                    <x-cmn.link-btn-arrow-e href="{{ route('recipes.show', $recipeId) }}" outlined class="ms-auto"/>
                 </div>
             </div>
         </div>

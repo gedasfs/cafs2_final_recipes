@@ -4,7 +4,7 @@
         <article class="row justify-content-center">
             @foreach ($recipes as $recipe)
                 <div class="col-12 col-md-6 mb-3">
-                    <x-recipes.card-recipe :id="$recipe->id">
+                    <x-recipes.card-recipe :recipeId="$recipe->id">
                         @php
                             $timeUnit = $timeUnits->first(fn($value, $key) => $value->id == $recipe->recipe_time_unit_id);
                             $difficultyLevel = $difficultyLevels->first(fn($value, $key) => $value->id == $recipe->difficulty_level_id)
