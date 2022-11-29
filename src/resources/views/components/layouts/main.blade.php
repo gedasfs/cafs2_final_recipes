@@ -14,14 +14,14 @@
     @vite(['resources/js/app.js'])
 </head>
 <body>
-    <div class="container-fluid" style="max-width: 1296px">
+    <div class="container-fluid min-vh-100" style="max-width: 1296px">
         <x-header />
 
-        <main>
+        <main class="mb-5">
             {{ $slot }}
         </main>
 
-        {{-- <x-footer /> --}}
+        <x-footer />
     </div>
 </body>
 </html>
