@@ -2,8 +2,8 @@
     <section>
         <h1 class="text-center mb-4">Receptai</h1>
         <article class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                @foreach ($recipes as $recipe)
+            @foreach ($recipes as $recipe)
+                <div class="col-12 col-md-6 mb-3">
                     <x-cmn.card-recipe :id="$recipe->id">
                         @php
                             $timeUnit = $timeUnits->first(fn($value, $key) => $value->id == $recipe->cook_time_unit_id);
@@ -18,8 +18,8 @@
                         <x-slot:difficulty>{{ $difficultyLevel->name }}</x-slot:difficulty>
 
                     </x-cmn.card-recipe>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
             <div class="mt-4">
                 {{ $recipes->links() }}
             </div>

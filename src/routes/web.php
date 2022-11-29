@@ -19,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $recipes = Recipe::latest()->take(4)->get();
+    $timeUnits = RecipeTimeUnit::all();
+    $difficultyLevels = DifficultyLevel::all();
+
+    return view('index', compact('recipes', 'timeUnits', 'difficultyLevels'));
 })->name('index');
 
 // Route::prefix('/auth')->name('auth.')->group(function() {

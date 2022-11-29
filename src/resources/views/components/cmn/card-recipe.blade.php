@@ -1,13 +1,13 @@
 @props(['id'])
 
-<div class="card mb-3 shadow">
-    <div class="row g-0">
+<div class="card mb-3 shadow h-100">
+    <div class="row g-0 h-100">
         <div class="col-12 col-xl-5 col-xxl-4 position-relative">
             <img src="{{ asset('images/meal-demo-5.jpg') }}" class="card-img rounded" alt="img-card">
             <x-cmn.link-btn-fav class="position-absolute top-0 start-0 m-3 m-md-2" />
         </div>
         <div class="col-12 col-xl-7 col-xxl-8">
-            <div class="card-body">
+            <div class="card-body d-flex flex-column h-100 justify-content-between">
                 <x-cmn.link href="{{ route('recipes.show', $id) }}">
                     <h4 class="card-title text-primary">{{ $name }}</h4>
                 </x-cmn.link>
