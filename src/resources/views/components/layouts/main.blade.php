@@ -14,7 +14,7 @@
     @vite(['resources/js/app.js'])
 </head>
 <body>
-    <div class="container-fluid min-vh-100 topmost-container">
+    <div class="container-fluid d-flex flex-column min-vh-100 topmost-container">
         <x-header />
 
         <main class="mb-5">
