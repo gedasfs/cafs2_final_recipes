@@ -24,24 +24,6 @@ Route::get('/', function () {
     return view('index', compact('recipes'));
 })->name('index');
 
-// Route::prefix('/auth')->name('auth.')->group(function() {
-//     Route::get('/', function() {
-//         return redirect()->route('auth.login');
-//     });
-
-//     Route::get('/login', function() {
-//         return view('authorization.login');
-//     })->name('login');
-
-//     Route::get('/register', function() {
-//         return view('authorization.register');
-//     })->name('register');
-
-//     Route::get('/forgot-password', function() {
-//         return view('authorization.forgot-password');
-//     })->name('password.request');
-// });
-
 Route::prefix('/recipes')->name('recipes.')->group(function () {
     Route::get('/', function() {
         $recipes = Recipe::paginate(10);
@@ -59,9 +41,11 @@ Route::prefix('/recipes')->name('recipes.')->group(function () {
     })->name('store');
 
     Route::get('/{recipe}', function(Recipe $recipe) {
-        // $timeUnits = RecipeTimeUnit::all();
+        $recipe = $recipe->load(['user', 'ingredientGroups', 'ingredientGroups.ingredients', 'instructionGroups', 'instructionGroups.instructions']);
+        // dd($recipe);
+        $timeUnit = RecipeTimeUnit::find($recipe->recipe_time_unit_id);
 
-        return view('recipes.show', compact('recipe'));
+        return view('recipes.show', compact('recipe', 'timeUnit'));
     })->name('show');
 
 });
