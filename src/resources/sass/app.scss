@@ -59,6 +59,19 @@ body {
 }
 
 
+// TEXTAREAS
+.text-area-countable {
+    // position-absolute bottom-5 end-5 text-muted fw-light border rounded-5 px-2
+    @extend .text-muted;
+    @extend .px-2;
+    @extend .border;
+    @extend .rounded-5;
+    @extend .position-absolute;
+    right: 5px;
+    bottom: 5px;
+    font-size: 0.8rem;
+}
+
 @include media-breakpoint-up(sm) {
     .landing-img {
         max-height: 300px;

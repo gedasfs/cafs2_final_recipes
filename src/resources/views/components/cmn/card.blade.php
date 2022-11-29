@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center mt-4">
     <div class="card">
-        <h5 {{ $header->attributes->merge(['class' => 'card-header']) }}>{{ $header }}</h5>
+        <h3 {{ $header->attributes->merge(['class' => 'card-header']) }}>{{ $header }}</h3>
         <div class="card-body">
             {{ $slot }}
         </div>

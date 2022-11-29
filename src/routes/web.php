@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Models\RecipeTimeUnit;
+use App\Models\DifficultyLevel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,8 +45,17 @@ Route::prefix('/recipes')->name('recipes.')->group(function () {
     })->name('index');
 
     Route::get('/create', function() {
-        return view('recipes.create');
+
+        $categories = Category::all();
+        $timeUnits = RecipeTimeUnit::all();
+        $difficultyLevels = DifficultyLevel::all();
+
+        return view('recipes.create', compact('categories', 'timeUnits', 'difficultyLevels'));
     })->name('create')->middleware(['auth', 'verified']);
+
+    Route::post('/store', function(Request $request) {
+        dd($request);
+    })->name('store');
 
 
 

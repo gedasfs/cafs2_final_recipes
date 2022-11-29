@@ -1,4 +1,4 @@
-@props(['id', 'type' => 'text'])
+@props(['id' => false, 'type' => 'text'])
 
 <div class="form-floating mb-3">
     <input
@@ -11,5 +11,9 @@
             ])
         }}
     >
-    <label for="{{ $id }}">{{ $slot }}</label>
+    <label
+        @if ($id)
+            for="{{ $id }}"
+        @endif
+    >{{ $slot }}</label>
 </div>
