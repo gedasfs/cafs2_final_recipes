@@ -44,8 +44,8 @@
                     <ul class="list-group">
                         @foreach ($ingridientGroup->ingredients as $ingridient)
                             <li class="list-group-item">
-                                <input class="form-check-input me-3" type="checkbox" id="ingredient{{ $loop->index+1 }}">
-                                <label class="form-check-label stretched-link" for="ingredient{{ $loop->index+1 }}">{{ $ingridient->quantity }} {{ $ingridient->unit }} {{ $ingridient->name }}</label>
+                                <input class="form-check-input me-3" type="checkbox" id="ingredient{{ $loop->parent->index+1 }}-{{ $loop->index+1 }}">
+                                <label class="form-check-label stretched-link" for="ingredient{{ $loop->parent->index+1 }}-{{ $loop->index+1 }}">{{ $ingridient->quantity }} {{ $ingridient->unit }} {{ $ingridient->name }}</label>
                             </li>
                         @endforeach
                     </ul>
