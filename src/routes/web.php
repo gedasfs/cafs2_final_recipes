@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\RecipeTimeUnit;
 use App\Models\DifficultyLevel;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Recipe\RecipeController;
-use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Recipes\RecipeController;
+use App\Http\Controllers\Categories\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
