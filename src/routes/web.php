@@ -7,6 +7,7 @@ use App\Models\RecipeTimeUnit;
 use App\Models\DifficultyLevel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Recipe\RecipeController;
+use App\Http\Controllers\Category\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +27,6 @@ Route::get('/', function () {
 })->name('index');
 
 Route::resource('/recipes', RecipeController::class);
-
-Route::prefix('/categories')->name('categories.')->group(function () {
-    Route::get('/', function() {
-        $categories = Category::paginate(12);
-
-        return view('categories.index', compact('categories'));
-    })->name('index');
-});
+Route::resource('/categories', CategoryController::class);
 
 require __DIR__.'/auth.php';
