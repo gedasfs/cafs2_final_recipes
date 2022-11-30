@@ -33,7 +33,7 @@
                 <x-recipes.recipe-create-section id="categoryDifficulty">
                     <x-slot:title>Kategorijos, sudėtingumas</x-slot:title>
 
-                    <div>
+                    <div id="category">
                         @error('category_id')
                             <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                         @enderror
@@ -48,7 +48,7 @@
                         </x-cmn.floating-select>
                     </div>
 
-                    <div id="categoryDifficulty">
+                    <div id="difficulty">
                         @error('difficulty_level_id')
                             <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                         @enderror
@@ -63,8 +63,11 @@
                         </x-cmn.floating-select>
                     </div>
 
-                    <div>
-                        <p><span class="text-danger">TO DO:</span> tags</p>
+                    <div id="tags">
+                        @error('tags')
+                            <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
+                        @enderror
+                        <x-cmn.floating-input name="tag" id="tag" class="{{ $errors->first('tag') ? 'is-invalid' : '' }}">Žymės (pvz., BBQ, be cukraus)</x-cmn.floating-input>
                     </div>
 
                 </x-recipes.recipe-create-section>
