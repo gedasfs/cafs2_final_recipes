@@ -29,14 +29,14 @@ class Recipe extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
-    public function ingredientGroups() : HasMany
+    public function ingredients() : HasMany
     {
-        return $this->hasMany(IngredientGroup::class);
+        return $this->hasMany(Ingredient::class);
     }
 
-    public function instructionGroups() : HasMany
+    public function instructions() : HasMany
     {
-        return $this->hasMany(InstructionGroup::class);
+        return $this->hasMany(Instruction::class);
     }
 
     public function prepTimeUnit() : BelongsTo

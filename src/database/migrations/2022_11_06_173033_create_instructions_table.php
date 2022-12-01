@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('instructions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('instruction_group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('recipe_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('description');
             $table->timestamps();
         });

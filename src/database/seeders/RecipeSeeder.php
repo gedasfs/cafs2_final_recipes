@@ -19,26 +19,9 @@ class RecipeSeeder extends Seeder
      */
     public function run()
     {
-
-        $recipes = Recipe::factory(10)->create();
-
-        foreach ($recipes as $recipe) {
-            IngredientGroup::factory(2)
-                ->has(Ingredient::factory()->count(2))
-                ->create([
-                    'recipe_id' => $recipe->id,
-                ]);
-
-            InstructionGroup::factory(2)
-                ->has(Instruction::factory()->count(2))
-                ->create([
-                    'recipe_id' => $recipe->id,
-                ]);
-        }
-
-        // Recipe::factory(10)
-        //     ->has(IngredientGroup::factory()->count(3))
-        //     ->has(InstructionGroup::factory()->count(5))
-        //     ->create();
+        Recipe::factory(10)
+            ->has(Ingredient::factory()->count(3))
+            ->has(Instruction::factory()->count(5))
+            ->create();
     }
 }

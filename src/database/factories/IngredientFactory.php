@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\IngredientGroup;
+use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class IngredientFactory extends Factory
     public function definition()
     {
         return [
-            'ingredient_group_id' => IngredientGroup::factory()->create(),
+            'recipe_id' => Recipe::factory()->create(),
             'name' => fake()->word(),
             'quantity' => fake()->randomNumber(1, 950),
             'unit' => fake()->randomElement(['g', 'kg', 'pcs.', 'tb']),

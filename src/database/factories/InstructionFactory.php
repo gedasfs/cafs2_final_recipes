@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\InstructionGroup;
+use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class InstructionFactory extends Factory
     public function definition()
     {
         return [
-            'instruction_group_id' => InstructionGroup::factory()->create(),
+            'recipe_id' => Recipe::factory()->create(),
             'description' => fake()->paragraph(),
         ];
     }

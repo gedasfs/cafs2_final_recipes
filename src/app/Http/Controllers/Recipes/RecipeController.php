@@ -56,7 +56,7 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        $recipe = $recipe->load(['user', 'ingredientGroups', 'ingredientGroups.ingredients', 'instructionGroups', 'instructionGroups.instructions']);
+        $recipe = $recipe->load(['user', 'ingredients', 'instructions']);
         // dd($recipe);
         $timeUnit = RecipeTimeUnit::find($recipe->recipe_time_unit_id);
 

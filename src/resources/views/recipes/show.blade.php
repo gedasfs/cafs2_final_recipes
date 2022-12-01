@@ -39,28 +39,25 @@
             </div>
             <div class="p-4 my-2">
                 <h3>Ingredientai</h3>
-                @foreach ($recipe->ingredientGroups as $ingridientGroup)
-                    <h5 class="text-primary mt-4 ms-2"><i>{{ $ingridientGroup->name }}</i></h5>
-                    <ul class="list-group">
-                        @foreach ($ingridientGroup->ingredients as $ingridient)
-                            <li class="list-group-item">
-                                <input class="form-check-input me-3" type="checkbox" id="ingredient{{ $loop->parent->index+1 }}-{{ $loop->index+1 }}">
-                                <label class="form-check-label stretched-link" for="ingredient{{ $loop->parent->index+1 }}-{{ $loop->index+1 }}">{{ $ingridient->quantity }} {{ $ingridient->unit }} {{ $ingridient->name }}</label>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endforeach
+
+                <ul class="list-group">
+                    @foreach ($recipe->ingredients as $ingridient)
+                        <li class="list-group-item">
+                            <input class="form-check-input me-3" type="checkbox" id="ingredient{{ $loop->index+1 }}">
+                            <label class="form-check-label stretched-link" for="ingredient{{ $loop->index+1 }}">{{ $ingridient->quantity }} {{ $ingridient->unit }} {{ $ingridient->name }}</label>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
             <div class="p-4 mb-2">
                 <h3>Gaminimo eiga</h3>
-                @foreach ($recipe->instructionGroups as $instructionGroup)
-                    <h5 class="text-primary mt-3 ms-2"><i>{{ $instructionGroup->name }}</i></h5>
-                    <ol class="list-group list-group-numbered list-group-flush">
-                        @foreach ($instructionGroup->instructions as $instruction)
-                            <li class="list-group-item">{{ $instruction->description }}</li>
-                        @endforeach
-                    </ol>
-                @endforeach
+
+                <ol class="list-group list-group-numbered list-group-flush">
+                    @foreach ($recipe->instructions as $instruction)
+                        <li class="list-group-item">{{ $instruction->description }}</li>
+                    @endforeach
+                </ol>
+
             </div>
             <div class="p-4 my-2">
                 <h3>Media</h3>

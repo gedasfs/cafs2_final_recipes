@@ -10,8 +10,8 @@ class Instruction extends Model
 {
     use HasFactory;
 
-    public function instructionGroup() : BelongsTo
+    public function recipe() : BelongsTo
     {
-        return $this->belongsTo(InstructionGroup::class);
+        return $this->belongsTo(Recipe::class);
     }
 }

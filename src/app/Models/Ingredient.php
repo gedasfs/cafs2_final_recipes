@@ -10,8 +10,8 @@ class Ingredient extends Model
 {
     use HasFactory;
 
-    public function ingredientGroup() : BelongsTo
+    public function recipe() : BelongsTo
     {
-        return $this->belongsTo(IngredientGroup::class);
+        return $this->belongsTo(Recipe::class);
     }
 }
