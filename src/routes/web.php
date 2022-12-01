@@ -21,7 +21,7 @@ use App\Http\Controllers\Categories\CategoryController;
 */
 
 Route::get('/', function () {
-    $recipes = Recipe::latest()->take(4)->get();
+    $recipes = Recipe::with('images')->latest()->take(4)->get();
 
     return view('index', compact('recipes'));
 })->name('index');

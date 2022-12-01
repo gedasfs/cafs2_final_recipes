@@ -30,7 +30,7 @@ class StoreRecipeRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:5', 'max:128'],
             'short_description' => ['nullable','string', 'min:5', 'max:255'],
-            'description' => ['nullable', 'string', 'min:5', 'max:255'],
+            'description' => ['nullable', 'string', 'min:5', 'max:10240'],
             'category_id' => ['required', sprintf('exists:%s,id', Category::class)],
             'difficulty_level_id' => ['nullable', sprintf('exists:%s,id', DifficultyLevel::class)],
             'tags' => ['nullable', 'string', 'min:3'],

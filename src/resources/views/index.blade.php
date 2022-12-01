@@ -16,6 +16,7 @@
                         <x-slot:timeUnit>{{ $timeUnit->name }}</x-slot:timeUnit>
                         <x-slot:servings>{{ $recipe->servings }}</x-slot:servings>
                         <x-slot:difficulty>{{ $difficultyLevel->name }}</x-slot:difficulty>
+                        <x-slot:imagePath>{{ asset($recipe->images[0]->path ?? 'images/recipes/default-recipe-img.png') }}</x-slot:imagePath>
 
                     </x-recipes.card-recipe>
                 </div>

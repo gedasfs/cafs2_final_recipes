@@ -25,8 +25,15 @@ class ImageFactory extends Factory
             Recipe::class,
         ]);
 
+        if ($imageable == Recipe::class) {
+            $path = 'images/recipes/meal-demo-' . rand(1, 5) . '.jpg';
+        } else {
+            $path = fake()->lexify('????/???/?????/????.???');
+        }
+
+
         return [
-            'path' => fake()->lexify('????/???/?????/????.???'),
+            'path' => $path,
             'imageable_type' => $imageable,
             'imageable_id' => $imageable::factory()->create(),
             'alt_text' => fake()->word(),
