@@ -69,10 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
     divRecipeCreate?.addEventListener('input', displayRemainingInputCharCount);
 
     const ingredientsTopWrapper = document.querySelector('#ingredients');
-    ingredientsTopWrapper.addEventListener('click', handleGroupBtnActions);
+    ingredientsTopWrapper?.addEventListener('click', handleGroupBtnActions);
 
 
     const instructionsTopWrapper = document.querySelector('#instructions');
-    instructionsTopWrapper.addEventListener('click', handleGroupBtnActions);
+    instructionsTopWrapper?.addEventListener('click', handleGroupBtnActions);
 
 });
