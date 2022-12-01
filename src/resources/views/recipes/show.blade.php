@@ -23,7 +23,7 @@
             </div>
             <div class="row bg-light p-4 rounded mb-2 text-center">
                 <div class="col-12 col-sm-6">
-                    <p class="mb-2 m-sm-0">Sudėtingumas: <strong class="text-primary">{{ $recipe->difficultyLevel->name }}</strong></p>
+                    <p class="mb-2 m-sm-0">Sudėtingumas: <strong class="text-primary">{{ $recipe->difficultyLevel->name}}</strong></p>
                 </div>
                 <div class="col-12 col-sm-6">
                     <p class="m-0">Porcijų sk.: <strong class="text-primary">{{ $recipe->servings }}</strong></p>

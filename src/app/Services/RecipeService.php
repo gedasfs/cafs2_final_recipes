@@ -39,21 +39,33 @@ class RecipeService
 
     private function saveRecipeImages(array $recipeValidated, Recipe $recipe) : void
     {
+        $filePaths = [];
+        // dd($recipeValidated['recipe_photo']);
         if (array_key_exists('recipe_photo', $recipeValidated)) {
-            $file = $recipeValidated['recipe_photo'];
+            $files = $recipeValidated['recipe_photo'];
 
-            $filePath = $file->store('images/recipes');
+            foreach ($files as $file) {
+                $filePaths[] = $file->store('images/recipes');
+            }
         } else {
-            $filePath = self::DEF_RECIPE_IMG_PATH;
+            $filePaths[] = self::DEF_RECIPE_IMG_PATH;
         }
 
         $images = [];
-        for ($i=0; $i < 2; $i++) {
+        foreach ($filePaths as $path) {
             $images[] = new Image([
-                'path' => $filePath,
+                'path' => $path,
                 'alt_text' => 'recipe-img',
             ]);
         }
+
+        // for ($i=0; $i < count($filePaths); $i++) {
+        //     $images[] = new Image([
+        //         'path' => $filePaths[$i],
+        //         'alt_text' => 'recipe-img',
+        //     ]);
+        // }
+        // dd($images);
         $recipe->images()->saveMany($images);
     }
 

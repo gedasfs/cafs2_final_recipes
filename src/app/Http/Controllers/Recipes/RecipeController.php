@@ -55,6 +55,7 @@ class RecipeController extends Controller
      */
     public function store(StoreRecipeRequest $request, RecipeService $recipeService)
     {
+        // dd($request->validated());
         $recipe = $recipeService->saveRecipe($request->validated());
 
         return redirect()->route('recipes.show', $recipe->id);

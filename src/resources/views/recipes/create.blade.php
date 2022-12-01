@@ -147,7 +147,7 @@
                         @error('recipe_photo')
                             <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                         @enderror
-                        <x-cmn.input-file name="recipe_photo">Pasirinkite nuotrauką receptui:</x-cmn.input-file>
+                        <x-cmn.input-file name="recipe_photo[]">Pasirinkite nuotrauką receptui:</x-cmn.input-file>
                     </div>
                     <div>
                         @error('ext_url')
