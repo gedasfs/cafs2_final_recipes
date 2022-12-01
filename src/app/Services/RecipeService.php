@@ -59,13 +59,6 @@ class RecipeService
             ]);
         }
 
-        // for ($i=0; $i < count($filePaths); $i++) {
-        //     $images[] = new Image([
-        //         'path' => $filePaths[$i],
-        //         'alt_text' => 'recipe-img',
-        //     ]);
-        // }
-        // dd($images);
         $recipe->images()->saveMany($images);
     }
 
