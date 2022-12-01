@@ -4,7 +4,7 @@
 
     if (!is_null(old('instruction_description'))) {
         foreach (old('instruction_description') as $name) {
-            $ingredients['instruction_description'][] = $name;
+            $instructions['instruction_description'][] = $name;
             $count++;
         }
     }
@@ -23,7 +23,7 @@
                 @endif
             </div>
             <div class="col-12 col-md-11">
-                <x-cmn.floating-textarea name="instruction_description[]" class="{{ $errors->get('instruction_description' . $i) ? 'is-invalid' : '' }}" countable maxlength="1000">Aprašymas</x-cmn.floating-textarea>
+                <x-cmn.floating-textarea name="instruction_description[]" value="{{ $instructions['instruction_description'][$i] }}" class="{{ $errors->get('instruction_description' . $i) ? 'is-invalid' : '' }}" countable maxlength="1000">Aprašymas</x-cmn.floating-textarea>
             </div>
             <div class="col-12 col-md-1 text-end">
                 <x-cmn.btn outlined color="secondary" class="px-3 py-2 mb-3" data-btn="removeLine">x</x-cmn.btn>
