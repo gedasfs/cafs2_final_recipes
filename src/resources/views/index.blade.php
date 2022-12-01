@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <section class="pt-2 bg-light">
+    <section class="py-2 bg-light">
         <h1 class="text-center text-secondary my-4">NAUJAUSI RECEPTAI</h1>
         <article class="row justify-content-center">
             @foreach ($recipes as $recipe)
@@ -19,6 +19,19 @@
                         <x-slot:imagePath>{{ asset($recipe->images[0]->path ?? 'images/recipes/default-recipe-img.png') }}</x-slot:imagePath>
 
                     </x-recipes.card-recipe>
+                </div>
+            @endforeach
+        </article>
+    </section>
+
+    <section class="py-2">
+        <h1 class="text-center text-secondary my-4">NAUJAUSIOS KATEGORIJOS</h1>
+        <article class="row justify-content-center">
+            @foreach ($categories as $category)
+                <div class="col-6 col-lg-3 mb-3 d-flex justify-content-center">
+                    <x-categories.card-category class="bg-light">
+                        <x-slot:cardTitle>{{ $category->name }}</x-slot:cardTitle>
+                    </x-categories.card-category>
                 </div>
             @endforeach
         </article>

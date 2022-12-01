@@ -1,6 +1,9 @@
 @props(['categoryId'])
 
-<div class="card card-category mb-3 shadow">
+<div {{ $attributes->merge([
+    'class' => 'card card-category mb-3 mb-3 shadow',
+    ]) }}>
+{{-- <div class="card card-category mb-3 shadow"> --}}
     <img src="{{ asset('images/categories/cat-demo-' . rand(1, 2) . '.png') }}" class="card-img-category card-img-top" alt="img-card">
     <div class="card-body">
         <h5 class="card-title">{{ $cardTitle }}</h5>
