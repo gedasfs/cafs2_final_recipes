@@ -23,31 +23,6 @@ function clearErrors(element) {
     console.log(errInputs);
 }
 
-// function updateIngredientsCountInLine(parentGroup) {
-//     const ingredientsCountInLine = parentGroup.querySelectorAll('.line').length;
-//     parentGroup.querySelector('[name="ingredients_count_in_line[]"]').value = ingredientsCountInLine;
-// }
-
-// function updateInstructionsCountInLine(parentGroup) {
-//     const instructionsCountInLine = parentGroup.querySelectorAll('.line').length;
-//     parentGroup.querySelector('[name="instructions_count_in_line[]"]').value = instructionsCountInLine;
-// }
-
-// function cloneGroupDiv(topWrapper) {
-
-//     const divGroups = topWrapper.querySelector('.groups-wrapper');
-//     const divClonableGroup = divGroups.querySelector('.group').cloneNode(true);
-
-//     cloneElement(divClonableGroup, divGroups);
-
-//     const divWithGroupTopIdName = divGroups.querySelector('.group').closest('.section').id;
-//     if (divWithGroupTopIdName == 'ingredients') {
-//         updateIngredientsCountInLine(divGroups.lastChild);
-//     } else if (divWithGroupTopIdName == 'instructions') {
-//         updateInstructionsCountInLine(divGroups.lastChild);
-//     }
-// }
-
 function cloneElement(clonableEl, parentElement) {
     const clone = clonableEl.cloneNode(true);
 
