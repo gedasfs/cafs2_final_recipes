@@ -6,7 +6,12 @@
                 <p>{{ $recipe->short_description }}</p>
                 <p class="m-0">Įkėlė <strong class="text-muted">{{ $recipe->user->firstname }} {{ $recipe->user->lastname }}</strong></p>
                 <p class="text-muted m-0">{{ $recipe->created_at->format('Y-m-d') }}</p>
-                <x-cmn.link-btn class="mt-3" outlined >Redaguoti</x-cmn.link-btn>
+                @can('update', $recipe)
+                    <div class="user-actions">
+                        <x-cmn.link-btn class="mt-3 me-2" outlined href="{{ route('recipes.edit', $recipe->id) }}">Redaguoti</x-cmn.link-btn>
+                        <x-cmn.link-btn class="mt-3" outlined color="danger">Ištrinti</x-cmn.link-btn>
+                    </div>
+                @endcan
             </div>
             <div class="mb-2 position-relative">
                 {{-- <img src="{{ asset('images/recipes/meal-demo-2.jpg') }}" class="card-img rounded" alt="img-card"> --}}

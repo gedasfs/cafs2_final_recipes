@@ -22,11 +22,13 @@ class RecipeController extends Controller
     {
         $this->middleware(['auth', 'verified'])->except(['index', 'show']);
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $recipes = Recipe::with('images')->paginate(10);
@@ -131,7 +133,9 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        //
+        $this->authorize('update', $recipe);
+
+        return view('recipes.edit', compact('recipe'));
     }
 
     /**
@@ -143,7 +147,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        //
+        $this->authorize('store', $recipe);
     }
 
     /**
