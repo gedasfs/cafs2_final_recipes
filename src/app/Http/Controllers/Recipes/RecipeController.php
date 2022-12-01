@@ -17,8 +17,6 @@ use App\Http\Requests\Recipes\StoreRecipeRequest;
 
 class RecipeController extends Controller
 {
-    protected const DEF_RECIPE_IMG_PATH = 'images/recipes/default-recipe-img.png';
-
     public function __construct()
     {
         $this->middleware(['auth', 'verified'])->except(['index', 'show']);
@@ -55,12 +53,9 @@ class RecipeController extends Controller
      */
     public function store(StoreRecipeRequest $request, RecipeService $recipeService)
     {
-        // $recipeValidated = $request->validated();
         $recipe = $recipeService->saveRecipe($request->validated());
 
         return redirect()->route('recipes.show', $recipe->id);
-
-        // dd($recipeValidated, $filePath);
     }
 
     /**
@@ -69,23 +64,11 @@ class RecipeController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show(Recipe $recipe, RecipeService $recipeService)
     {
-        $recipe = $recipe->load(['user', 'ingredients', 'instructions', 'images']);
-        $timeUnit = RecipeTimeUnit::find($recipe->recipe_time_unit_id);
+        $result = $recipeService->getRecipe($recipe);
 
-        if (count($recipe->images)) {
-            $recipeImagePath = $recipe->images[0]->path;
-
-            if (!Storage::disk('local')->exists($recipeImagePath)) {
-                $recipeImagePath = self::DEF_RECIPE_IMG_PATH;
-
-            }
-        } else {
-            $recipeImagePath = self::DEF_RECIPE_IMG_PATH;
-        }
-
-        return view('recipes.show', compact('recipe', 'timeUnit', 'recipeImagePath'));
+        return view('recipes.show', $result);
     }
 
     /**

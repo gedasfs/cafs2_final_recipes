@@ -6,6 +6,8 @@ use App\Models\Image;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Models\Instruction;
+use App\Models\RecipeTimeUnit;
+use Illuminate\Support\Facades\Storage;
 
 class RecipeService
 {
@@ -65,5 +67,23 @@ class RecipeService
             $instructions[] = new Instruction(['description' => $description]);
         }
         $recipe->instructions()->saveMany($instructions);
+    }
+
+    public function getRecipe(Recipe $recipe) : array
+    {
+        $recipe = $recipe->load(['user', 'ingredients', 'instructions', 'images']);
+        $timeUnit = RecipeTimeUnit::find($recipe->recipe_time_unit_id);
+
+        if (count($recipe->images)) {
+            $recipeImagePath = $recipe->images[0]->path;
+
+            if (!Storage::disk('local')->exists($recipeImagePath)) {
+                $recipeImagePath = self::DEF_RECIPE_IMG_PATH;
+            }
+        } else {
+            $recipeImagePath = self::DEF_RECIPE_IMG_PATH;
+        }
+
+        return compact('recipe', 'timeUnit', 'recipeImagePath');
     }
 }
