@@ -7,9 +7,13 @@
                 <p class="m-0">Įkėlė <strong class="text-muted">{{ $recipe->user->firstname }} {{ $recipe->user->lastname }}</strong></p>
                 <p class="text-muted m-0">{{ $recipe->created_at->format('Y-m-d') }}</p>
                 @can('update', $recipe)
-                    <div class="user-actions">
+                    <div class="user-actions d-flex justify-content-center">
                         <x-cmn.link-btn class="mt-3 me-2" outlined href="{{ route('recipes.edit', $recipe->id) }}">Redaguoti</x-cmn.link-btn>
-                        <x-cmn.link-btn class="mt-3" outlined color="danger">Ištrinti</x-cmn.link-btn>
+                        <form method="POST" action="{{ route('recipes.destroy', $recipe->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-cmn.btn type="submit" class="mt-3" outlined color="danger">Ištrinti</x-cmn.btn>
+                        </form>
                     </div>
                 @endcan
             </div>
