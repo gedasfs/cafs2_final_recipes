@@ -29,7 +29,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::paginate(10);
+        $recipes = Recipe::with('images')->paginate(10);
 
         return view('recipes.index', compact('recipes'));
     }
