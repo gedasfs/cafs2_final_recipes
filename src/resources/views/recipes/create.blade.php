@@ -3,7 +3,7 @@
         <x-slot:header class="py-3 text-center">Naujo recepto įkėlimas</x-slot:header>
 
         <div id="recipeCreate">
-            <form method="POST" action="{{ route('recipes.store') }}">
+            <form method="POST" action="{{ route('recipes.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <x-recipes.recipe-create-section id="recipeGeneral">

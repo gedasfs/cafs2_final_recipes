@@ -9,7 +9,8 @@
                 <x-cmn.link-btn class="mt-3" outlined >Redaguoti</x-cmn.link-btn>
             </div>
             <div class="mb-2 position-relative">
-                <img src="{{ asset('images/recipes/meal-demo-2.jpg') }}" class="card-img rounded" alt="img-card">
+                {{-- <img src="{{ asset('images/recipes/meal-demo-2.jpg') }}" class="card-img rounded" alt="img-card"> --}}
+                <img src="{{ asset($recipeImagePath) }}" class="card-img rounded" alt="img-card">
                 <x-cmn.link-btn-fav class="position-absolute top-0 start-0 m-3 m-md-2" />
             </div>
             <div class="p-4 rounded mb-2">

@@ -14,6 +14,23 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'name',
+        'short_description',
+        'description',
+        'category_id',
+        'difficulty_level_id',
+        'prep_time',
+        'cook_time',
+        'total_time',
+        'recipe_time_unit_id',
+        'servings',
+        'ext_url',
+        'video_path',
+
+    ];
+
     public function category() : BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -39,12 +56,7 @@ class Recipe extends Model
         return $this->hasMany(Instruction::class);
     }
 
-    public function prepTimeUnit() : BelongsTo
-    {
-        return $this->belongsTo(RecipeTimeUnit::class);
-    }
-
-    public function cookTimeUnit() : BelongsTo
+    public function recipeTimeUnit() : BelongsTo
     {
         return $this->belongsTo(RecipeTimeUnit::class);
     }

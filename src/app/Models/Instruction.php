@@ -10,6 +10,8 @@ class Instruction extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['description'];
+
     public function recipe() : BelongsTo
     {
         return $this->belongsTo(Recipe::class);

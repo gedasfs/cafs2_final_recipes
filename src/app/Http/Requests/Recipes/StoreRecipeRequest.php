@@ -3,8 +3,9 @@
 namespace App\Http\Requests\Recipes;
 
 use App\Models\Category;
-use App\Models\DifficultyLevel;
 use App\Models\RecipeTimeUnit;
+use App\Models\DifficultyLevel;
+use Illuminate\Validation\Rules\File;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRecipeRequest extends FormRequest
@@ -51,7 +52,7 @@ class StoreRecipeRequest extends FormRequest
             'instruction_description'  => ['required', 'array', 'min:1'],
             'instruction_description.*'  => ['required', 'string'],
 
-            'recipe_photo' => ['nullable', 'file'],
+            'recipe_photo' => ['nullable', File::image()->max(10*1024)],
             'ext_url' => ['nullable', 'url'],
         ];
     }

@@ -29,7 +29,7 @@ class ImageFactory extends Factory
             'path' => fake()->lexify('????/???/?????/????.???'),
             'imageable_type' => $imageable,
             'imageable_id' => $imageable::factory()->create(),
-            'altText' => fake()->word(),
+            'alt_text' => fake()->word(),
         ];
     }
 }

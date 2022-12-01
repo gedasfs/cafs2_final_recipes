@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->morphs('imageable');
             $table->string('path');
-            $table->string('altText');
+            $table->string('alt_text');
             $table->timestamps();
         });
     }
