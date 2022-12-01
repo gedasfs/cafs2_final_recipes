@@ -1,6 +1,7 @@
 <x-layouts.main>
     <section>
         <h1 class="text-center mb-4">Receptai</h1>
+        <x-.recipes.order-by-form :$orderByValues />
         <article class="row justify-content-center">
             @foreach ($recipes as $recipe)
                 <div class="col-12 col-md-6 mb-3">

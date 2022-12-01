@@ -11,7 +11,16 @@ use Illuminate\Support\Facades\Storage;
 
 class RecipeService
 {
-    protected const DEF_RECIPE_IMG_PATH = 'images/recipes/default-recipe-img.png';
+    private const DEF_RECIPE_IMG_PATH = 'images/recipes/default-recipe-img.png';
+
+    private const ORDER_VALUES = [
+        'created_at' => 'Naujausi viršuje',
+        'name:asc' => 'A...Ž',
+        'name:desc' => 'Ž...A',
+    ];
+
+    private const ORDER_DEFAULT_VALUE = 'created_at';
+
 
     public function saveRecipe(array $recipeValidated) : Recipe
     {
@@ -85,5 +94,27 @@ class RecipeService
         }
 
         return compact('recipe', 'timeUnit', 'recipeImagePath');
+    }
+
+    public function getPaginatedRecipes(array $filters = [])
+    {
+        $orderBy = data_get($filters, 'order_by');
+        $orderBy = array_key_exists($orderBy, self::ORDER_VALUES) ? $orderBy : self::ORDER_DEFAULT_VALUE;
+        $orderBy = explode(':', $orderBy);
+
+        $orderByCol = $orderBy[0];
+        $orderByDir = $orderBy[1] ?? 'desc';
+
+        $recipesQuery = Recipe::query()->orderBy($orderByCol, $orderByDir);
+
+
+        $recipes = $recipesQuery->with('images')->paginate(10);
+
+        return $recipes;
+    }
+
+    public function getOrderByValues() : array
+    {
+        return self::ORDER_VALUES;
     }
 }

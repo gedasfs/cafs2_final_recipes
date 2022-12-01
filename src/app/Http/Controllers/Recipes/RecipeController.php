@@ -28,11 +28,13 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(RecipeService $recipeService, Request $request)
     {
-        $recipes = Recipe::with('images')->paginate(10);
+        $orderByValues = $recipeService->getOrderByValues();
+        $recipes = $recipeService->getPaginatedRecipes($request->only('order_by'));
 
-        return view('recipes.index', compact('recipes'));
+
+        return view('recipes.index', compact('recipes', 'orderByValues'));
     }
 
     /**
