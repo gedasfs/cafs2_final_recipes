@@ -40,7 +40,7 @@ class RecipeService
     private function saveRecipeImages(array $recipeValidated, Recipe $recipe) : void
     {
         $filePaths = [];
-        // dd($recipeValidated['recipe_photo']);
+
         if (array_key_exists('recipe_photo', $recipeValidated)) {
             $files = $recipeValidated['recipe_photo'];
 
