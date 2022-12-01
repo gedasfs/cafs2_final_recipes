@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Models\RecipeTimeUnit;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Recipes\StoreRecipeRequest;
 
 class RecipeController extends Controller
 {
@@ -42,7 +43,7 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRecipeRequest $request)
     {
         dd($request);
     }

@@ -8,41 +8,71 @@ function clearInputsInsideElement(element) {
     });
 }
 
-function cloneGroupDiv(topWrapper) {
+function clearErrors(element) {
+    const errorsDiv = element.querySelector('.errors');
+    const errInputs = element.querySelectorAll('.is-invalid');
 
-    const divGroups = topWrapper.querySelector('.groups-wrapper');
-    const divClonableGroup = divGroups.querySelector('.group').cloneNode(true);
+    if (errorsDiv) {
+        errorsDiv.remove();
+    }
 
-    cloneElement(divClonableGroup, divGroups);
+    if (errInputs.length > 0) {
+        [...errInputs].forEach(input => input.classList.remove('is-invalid'));
+    }
+
+    console.log(errInputs);
 }
+
+// function updateIngredientsCountInLine(parentGroup) {
+//     const ingredientsCountInLine = parentGroup.querySelectorAll('.line').length;
+//     parentGroup.querySelector('[name="ingredients_count_in_line[]"]').value = ingredientsCountInLine;
+// }
+
+// function updateInstructionsCountInLine(parentGroup) {
+//     const instructionsCountInLine = parentGroup.querySelectorAll('.line').length;
+//     parentGroup.querySelector('[name="instructions_count_in_line[]"]').value = instructionsCountInLine;
+// }
+
+// function cloneGroupDiv(topWrapper) {
+
+//     const divGroups = topWrapper.querySelector('.groups-wrapper');
+//     const divClonableGroup = divGroups.querySelector('.group').cloneNode(true);
+
+//     cloneElement(divClonableGroup, divGroups);
+
+//     const divWithGroupTopIdName = divGroups.querySelector('.group').closest('.section').id;
+//     if (divWithGroupTopIdName == 'ingredients') {
+//         updateIngredientsCountInLine(divGroups.lastChild);
+//     } else if (divWithGroupTopIdName == 'instructions') {
+//         updateInstructionsCountInLine(divGroups.lastChild);
+//     }
+// }
 
 function cloneElement(clonableEl, parentElement) {
     const clone = clonableEl.cloneNode(true);
 
     clearInputsInsideElement(clone);
+    clearErrors(clone);
 
     parentElement.appendChild(clone);
 }
 
 function handleGroupBtnActions (event) {
-    const parentGroup = event.target.closest('.group');
+    const parentSection = event.target.closest('.section');
+    const linesWrapper = parentSection.querySelector('.lines');
 
     if (event.target.type == 'button' && event.target.dataset.btn == 'addLine') {
-
-        const lineToClone = parentGroup.querySelector('.line');
-        const insertInto = parentGroup.querySelector('.lines-in-group');
-
-        cloneElement(lineToClone, insertInto);
+        const lineToClone = linesWrapper.querySelector('.line');
+        cloneElement(lineToClone, linesWrapper);
     } else if (event.target.type == 'button' && event.target.dataset.btn == 'removeLine') {
-        const allLinesInGroup = parentGroup.querySelectorAll('.line');
-
-        // Prevent deleting last line
-        if (allLinesInGroup.length == 1) {
+        const linesCount = linesWrapper.querySelectorAll('.line').length;
+        if (linesCount == 1) {
             return;
         }
 
-        event.target.parentElement.parentElement.remove();
+        event.target.closest('.line').remove();
     }
+
 }
 
 function displayRemainingInputCharCount (event) {
@@ -63,20 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const divRecipeCreate = document.querySelector('#recipeCreate');
     divRecipeCreate?.addEventListener('input', displayRemainingInputCharCount);
 
-
     const ingredientsTopWrapper = document.querySelector('#ingredients');
-    const btnAddIngredientGroup = ingredientsTopWrapper?.querySelector('[data-btn="addIngredientGroup"]');
-    const divIngredientGroups = ingredientsTopWrapper?.querySelector('.groups-wrapper');
-
-    btnAddIngredientGroup?.addEventListener('click', () => cloneGroupDiv(ingredientsTopWrapper));
-    divIngredientGroups?.addEventListener('click', handleGroupBtnActions);
+    ingredientsTopWrapper.addEventListener('click', handleGroupBtnActions);
 
 
     const instructionsTopWrapper = document.querySelector('#instructions');
-    const btnAddInstructionGroup = instructionsTopWrapper?.querySelector('[data-btn="addInstructionGroup"]');
-    const divInstructionGroups = instructionsTopWrapper?.querySelector('.groups-wrapper');
-
-    btnAddInstructionGroup?.addEventListener('click', () => cloneGroupDiv(instructionsTopWrapper));
-    divInstructionGroups?.addEventListener('click', handleGroupBtnActions);
+    instructionsTopWrapper.addEventListener('click', handleGroupBtnActions);
 
 });

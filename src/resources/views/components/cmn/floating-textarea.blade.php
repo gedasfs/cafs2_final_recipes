@@ -1,4 +1,4 @@
-@props(['id' => false, 'height' => '80px', 'maxlength' => '', 'countable' => false])
+@props(['id' => false, 'height' => '80px', 'maxlength' => '', 'countable' => false, 'value' => ''])
 
 <div class="form-floating mb-3">
     <textarea
@@ -13,7 +13,7 @@
                 'countable' => $countable,
             ])
         }}
-    ></textarea>
+    >{{ $value }}</textarea>
     <label
         @if ($id)
             for="{{ $id }}"
