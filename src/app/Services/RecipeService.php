@@ -14,12 +14,13 @@ class RecipeService
     private const DEF_RECIPE_IMG_PATH = 'images/recipes/default-recipe-img.png';
 
     private const ORDER_VALUES = [
-        'created_at' => 'Naujausi viršuje',
+        'created_at:desc' => 'Naujausi viršuje',
+        'created_at:asc' => 'Seniausi viršuje',
         'name:asc' => 'A...Ž',
         'name:desc' => 'Ž...A',
     ];
 
-    private const ORDER_DEFAULT_VALUE = 'created_at';
+    private const ORDER_DEFAULT_VALUE = 'created_at:desc';
 
 
     public function saveRecipe(array $recipeValidated) : Recipe
