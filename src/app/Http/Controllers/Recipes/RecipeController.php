@@ -9,6 +9,7 @@ use App\Models\Ingredient;
 use App\Models\Instruction;
 use Illuminate\Http\Request;
 use App\Models\RecipeTimeUnit;
+use App\Services\RecipeService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -52,52 +53,14 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRecipeRequest $request)
+    public function store(StoreRecipeRequest $request, RecipeService $recipeService)
     {
-        $recipeValidated = $request->validated();
-        $user = Auth::user();
-        $recipeValidated['user_id'] = $user->id;
-
-        $recipe = Recipe::create($recipeValidated);
-
-        $instructions = [];
-        foreach ($recipeValidated['instruction_description'] as $description) {
-            $instructions[] = new Instruction(['description' => $description]);
-        }
-        $recipe->instructions()->saveMany($instructions);
-
-        $ingredients = [];
-        for ($i=0; $i < count($recipeValidated['ingredient_name']); $i++) {
-            $ingredients[] = new Ingredient([
-                'name' => $recipeValidated['ingredient_name'][$i],
-                'quantity' => $recipeValidated['ingredient_quantity'][$i],
-                'unit' =>$recipeValidated['ingredient_unit'][$i]
-            ]);
-        }
-        $recipe->ingredients()->saveMany($ingredients);
-
-
-        if (array_key_exists('recipe_photo', $recipeValidated)) {
-            $file = $recipeValidated['recipe_photo'];
-
-            $filePath = $file->store('images/recipes');
-        } else {
-            $filePath = self::DEF_RECIPE_IMG_PATH;
-        }
-
-        $images = [];
-        for ($i=0; $i < 2; $i++) {
-            $images[] = new Image([
-                'path' => $filePath,
-                'alt_text' => 'recipe-img',
-            ]);
-        }
-        $recipe->images()->saveMany($images);
-
+        // $recipeValidated = $request->validated();
+        $recipe = $recipeService->saveRecipe($request->validated());
 
         return redirect()->route('recipes.show', $recipe->id);
 
-        dd($recipeValidated, $filePath);
+        // dd($recipeValidated, $filePath);
     }
 
     /**
