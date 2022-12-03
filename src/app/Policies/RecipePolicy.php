@@ -65,7 +65,7 @@ class RecipePolicy
      */
     public function delete(User $user, Recipe $recipe)
     {
-        //
+        return $this->update($user, $recipe);
     }
 
     /**
