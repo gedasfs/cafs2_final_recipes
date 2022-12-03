@@ -62,6 +62,16 @@ function displayRemainingInputCharCount (event) {
     }
 }
 
+function confirmDelete(event) {
+    event.preventDefault();
+
+    if (!confirm('Ar tikrai norite ištrinti?')) {
+        return;
+    }
+
+    this.submit();
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -74,5 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const instructionsTopWrapper = document.querySelector('#instructions');
     instructionsTopWrapper?.addEventListener('click', handleGroupBtnActions);
+
+    const deleteForm = document.querySelector('.delete-form');
+    deleteForm.addEventListener('submit', confirmDelete);
 
 });
