@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Models\Instruction;
+use Illuminate\Support\Str;
 use App\Models\RecipeTimeUnit;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,7 +46,15 @@ class RecipeService
             $files = $recipeValidated['recipe_photo'];
 
             foreach ($files as $file) {
-                $filePaths[] = $file->store('images/recipes');
+                $fileName = $file->store('public/images/recipes');
+
+                if (Str::startsWith($fileName, '/public\/')) {
+                    $fileName = Str::replaceFirst('/public\/', '', $fileName);
+                } elseif (Str::startsWith($fileName, 'public/')) {
+                    $fileName = Str::replaceFirst('public/', '', $fileName);
+                }
+
+                $filePaths[] = $fileName;
             }
         } else {
             $filePaths[] = self::DEF_RECIPE_IMG_PATH;
@@ -92,7 +101,7 @@ class RecipeService
         if (count($recipe->images)) {
             $recipeImagePath = $recipe->images[0]->path;
 
-            if (!Storage::disk('local')->exists($recipeImagePath)) {
+            if (!Storage::disk('local')->exists('public/' . $recipeImagePath)) {
                 $recipeImagePath = self::DEF_RECIPE_IMG_PATH;
             }
         } else {

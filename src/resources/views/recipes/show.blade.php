@@ -18,7 +18,6 @@
                 @endcan
             </div>
             <div class="mb-2 position-relative">
-                {{-- <img src="{{ asset('images/recipes/meal-demo-2.jpg') }}" class="card-img rounded" alt="img-card"> --}}
                 <img src="{{ asset($recipeImagePath) }}" class="card-img rounded" alt="img-card">
                 <x-cmn.link-btn-fav class="position-absolute top-0 start-0 m-3 m-md-2" />
             </div>

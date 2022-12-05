@@ -3,7 +3,6 @@
 <div class="card mb-3 shadow h-100">
     <div class="row g-0 h-100">
         <div class="col-12 col-xl-5 col-xxl-4 position-relative">
-            {{-- <img src="{{ asset('images/recipes/meal-demo-' . rand(1, 5) . '.jpg') }}" class="card-img rounded" alt="img-card"> --}}
             <img src="{{ $imagePath }}" class="card-img rounded" alt="img-card">
             <x-cmn.link-btn-fav class="position-absolute top-0 start-0 m-3 m-md-2" />
         </div>

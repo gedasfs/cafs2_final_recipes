@@ -26,7 +26,7 @@ class ImageFactory extends Factory
         ]);
 
         if ($imageable == Recipe::class) {
-            $path = 'images/recipes/meal-demo-' . rand(1, 5) . '.jpg';
+            $path = 'images/recipes/demo-meal-' . rand(1, 5) . '.jpg';
         } else {
             $path = fake()->lexify('????/???/?????/????.???');
         }

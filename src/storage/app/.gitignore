@@ -1,5 +1,3 @@
 *
 !public/
-!images/demo/
-!images/header/header-img.jpg
 !.gitignore
