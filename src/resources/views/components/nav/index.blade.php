@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid justify-content-end">
         <a href="{{ route('index') }}" class="navbar-brand ms-2 ms-lg-5">
-            <img src={{ asset('images/navbar/navbar-brand.png') }} alt="navbar-brand">
+            @include('components.nav.navbar-brand')
         </a>
 
         {{-- Should not be displayed when user is logged OUT --}}
