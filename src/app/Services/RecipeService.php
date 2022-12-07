@@ -24,6 +24,11 @@ class RecipeService
 
     private const ORDER_DEFAULT_VALUE = 'created_at:desc';
 
+    public function updateRecipe(array $recipeValidated, $recipe) : void
+    {
+        dd($recipeValidated);
+    }
+
 
     public function saveRecipe(array $recipeValidated) : Recipe
     {

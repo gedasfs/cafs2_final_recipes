@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers\Recipes;
 
-use Faker\Core\File;
-use App\Models\Image;
+
 use App\Models\Recipe;
-use App\Models\Ingredient;
-use App\Models\Instruction;
 use Illuminate\Http\Request;
-use App\Models\RecipeTimeUnit;
 use App\Services\RecipeService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Recipes\StoreRecipeRequest;
+use App\Http\Requests\Recipes\UpdateRecipeRequest;
 
 class RecipeController extends Controller
 {
@@ -94,9 +89,12 @@ class RecipeController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(UpdateRecipeRequest $request, RecipeService $recipeService, Recipe $recipe)
     {
-        $this->authorize('store', $recipe);
+        $this->authorize('update', $recipe);
+
+        $recipeService->updateRecipe($request->validated(), $recipe);
+
     }
 
     /**
