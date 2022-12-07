@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class RecipeService
 {
+    private const DEF_RECIPE_IMG_SAVE_PATH = 'public/images/recipes';
     private const DEF_RECIPE_IMG_PATH = 'images/recipes/default-recipe-img.png';
 
     private const ORDER_VALUES = [
@@ -46,15 +47,24 @@ class RecipeService
             $files = $recipeValidated['recipe_photo'];
 
             foreach ($files as $file) {
-                $fileName = $file->store('public/images/recipes');
+                do {
+                    $hashedFileName = $file->hashName();
+                    $hashedFilePath = sprintf('%s/%s', self::DEF_RECIPE_IMG_SAVE_PATH, $hashedFileName);
+                } while (Storage::disk()->exists($hashedFilePath));
 
-                if (Str::startsWith($fileName, '/public\/')) {
-                    $fileName = Str::replaceFirst('/public\/', '', $fileName);
-                } elseif (Str::startsWith($fileName, 'public/')) {
-                    $fileName = Str::replaceFirst('public/', '', $fileName);
+                $storedFileName = Storage::putFileAs(
+                    self::DEF_RECIPE_IMG_SAVE_PATH,
+                    $file,
+                    $hashedFileName
+                );
+
+                if (Str::startsWith($storedFileName, '/public\/')) {
+                    $storedFileName = Str::replaceFirst('/public\/', '', $storedFileName);
+                } elseif (Str::startsWith($storedFileName, 'public/')) {
+                    $storedFileName = Str::replaceFirst('public/', '', $storedFileName);
                 }
 
-                $filePaths[] = $fileName;
+                $filePaths[] = $storedFileName;
             }
         } else {
             $filePaths[] = self::DEF_RECIPE_IMG_PATH;
