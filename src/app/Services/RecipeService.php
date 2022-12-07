@@ -43,8 +43,8 @@ class RecipeService
     {
         $filePaths = [];
 
-        if (array_key_exists('recipe_photo', $recipeValidated)) {
-            $files = $recipeValidated['recipe_photo'];
+        if (array_key_exists('recipe_photos', $recipeValidated)) {
+            $files = $recipeValidated['recipe_photos'];
 
             foreach ($files as $file) {
                 do {

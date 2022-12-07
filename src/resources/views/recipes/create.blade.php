@@ -144,16 +144,16 @@
                 <x-recipes.recipe-create-section id="media">
                     <x-slot:title>Media</x-slot:title>
                     <div>
-                        @error('recipe_photo')
+                        @error('recipe_photos')
                             <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                         @enderror
-                        <x-cmn.input-file name="recipe_photo[]">Pasirinkite nuotrauką receptui:</x-cmn.input-file>
+                        <x-cmn.input-file name="recipe_photos[]" value="{{ old('recipe_photos') }}">Pasirinkite nuotrauką receptui:</x-cmn.input-file>
                     </div>
                     <div>
                         @error('ext_url')
                             <x-cmn.input-error-msg>{{ $message }}</x-cmn.input-error-msg>
                         @enderror
-                        <x-cmn.floating-input name="ext_url" id="extUrl" value="{{ old('ext_url') }}" class="{{ $errors->first('ext_url') ? 'is-invalid' : '' }}">Išorinė nuoroda į receptą</x-cmn.floating-input>
+                        <x-cmn.floating-input name="ext_url" id="extUrl" value="{{ old('ext_url', $recipe->ext_url ?? '') }}" class="{{ $errors->first('ext_url') ? 'is-invalid' : '' }}">Išorinė nuoroda į receptą</x-cmn.floating-input>
                     </div>
                 </x-recipes.recipe-create-section>
 
