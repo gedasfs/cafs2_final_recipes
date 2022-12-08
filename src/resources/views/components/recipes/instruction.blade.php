@@ -15,7 +15,7 @@
     if (!is_null(old('instruction_id'))) {
         foreach (old('instruction_id') as $name) {
             $instructions['instruction_id'][] = $name;
-            $count['instruction_id']++;
+            $counts['instruction_id']++;
         }
     }
 

@@ -24,9 +24,60 @@ class RecipeService
 
     private const ORDER_DEFAULT_VALUE = 'created_at:desc';
 
-    public function updateRecipe(array $recipeValidated, $recipe) : void
+    public function updateRecipe(array $recipeValidated, $recipe) : Recipe
     {
-        dd($recipeValidated);
+        $recipe->fill($recipeValidated);
+        $recipe->save();
+        $this->updateRecipeIngredients($recipeValidated, $recipe);
+        $this->updateRecipeInstructions($recipeValidated, $recipe);
+
+        return $recipe;
+    }
+
+    private function updateRecipeIngredients(array $recipeValidated, Recipe $recipe) : void
+    {
+        $ingredients = [];
+        for ($i = 0; $i < count($recipeValidated['ingredient_id']); $i++) {
+            $ingredients[] = $recipe->ingredients()->updateOrCreate(
+                ['id' => $recipeValidated['ingredient_id'][$i]],
+                [
+                    'name' => $recipeValidated['ingredient_name'][$i],
+                    'quantity' => $recipeValidated['ingredient_quantity'][$i],
+                    'unit' =>$recipeValidated['ingredient_unit'][$i]
+                ]
+            );
+        }
+
+        $origIngredients = Ingredient::where('recipe_id', $recipe->id)->get();
+        $newIngrediendtIds = collect($ingredients)->pluck('id')->all();
+
+        foreach ($origIngredients as $origIngredient) {
+            if (!in_array($origIngredient->id, $newIngrediendtIds)) {
+                $origIngredient->delete();
+            }
+        }
+    }
+
+    private function updateRecipeInstructions(array $recipeValidated, Recipe $recipe) : void
+    {
+        $instructions = [];
+        for ($i = 0; $i < count($recipeValidated['instruction_id']); $i++) {
+            $instrutions[] = $recipe->instructions()->updateOrCreate(
+                ['id' => $recipeValidated['instruction_id'][$i]],
+                [
+                    'description' => $recipeValidated['instruction_description'][$i],
+                ]
+            );
+        }
+
+        $origInstructions = Instruction::where('recipe_id', $recipe->id)->get();
+        $newInstructionIds = collect($instrutions)->pluck('id')->all();
+
+        foreach ($origInstructions as $origInstruction) {
+            if (!in_array($origInstruction->id, $newInstructionIds)) {
+                $origInstruction->delete();
+            }
+        }
     }
 
 

@@ -95,6 +95,8 @@ class RecipeController extends Controller
 
         $recipeService->updateRecipe($request->validated(), $recipe);
 
+        return redirect()->route('recipes.show', $recipe->id);
+
     }
 
     /**
