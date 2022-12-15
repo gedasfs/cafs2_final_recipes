@@ -40,6 +40,8 @@ class StoreRecipeRequest extends FormRequest
             'recipe_time_unit_id' => ['required', sprintf('exists:%s,id', RecipeTimeUnit::class)],
             'servings' => ['required', 'numeric', 'integer'],
 
+            'ingredient_id.*'  => ['nullable'],
+
             'ingredient_name'  => ['required', 'array', 'min:1'],
             'ingredient_name.*'  => ['required', 'string'],
 
@@ -48,6 +50,8 @@ class StoreRecipeRequest extends FormRequest
 
             'ingredient_unit'  => ['required', 'array', 'min:1'],
             'ingredient_unit.*'  => ['required', 'string'],
+
+            'instruction_id.*'  => ['nullable'],
 
             'instruction_description'  => ['required', 'array', 'min:1'],
             'instruction_description.*'  => ['required', 'string'],

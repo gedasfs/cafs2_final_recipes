@@ -55,6 +55,7 @@
     @endforeach
 @else
     <div class="row justify-content-between align-items-top mb-3 mb-md-0 ms-2 line">
+        <x-cmn.input-hidden name="instruction_id[]" value="{{ $instruction->id ?? null }}" />
         <div class="col-12 col-md-11">
             <x-cmn.floating-textarea name="instruction_description[]" countable maxlength="1000">Aprašymas*</x-cmn.floating-textarea>
         </div>

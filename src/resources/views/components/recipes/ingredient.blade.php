@@ -93,6 +93,7 @@
         @endforeach
 @else
     <div class="row justify-content-between align-items-center mb-3 mb-md-0 ms-2 line">
+        <x-cmn.input-hidden name="ingredient_id[]" value="{{ $ingredient->id ?? null }}" />
         <div class="col-12 col-md-5">
             <x-cmn.floating-input type="text" name="ingredient_name[]">Ingredientas*</x-cmn.floating-input>
         </div>
