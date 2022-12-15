@@ -8,11 +8,14 @@ use App\Models\Ingredient;
 use App\Models\Instruction;
 use Illuminate\Support\Str;
 use App\Models\RecipeTimeUnit;
+use App\Traits\StoreImagesTrait;
 use Illuminate\Support\Facades\Storage;
 
 class RecipeService
 {
-    private const DEF_RECIPE_IMG_SAVE_PATH = 'public/images/recipes';
+    use StoreImagesTrait;
+
+    // private const DEF_RECIPE_IMG_SAVE_PATH = 'public/images/recipes';
     private const DEF_RECIPE_IMG_PATH = 'images/recipes/default-recipe-img.png';
 
     private const ORDER_VALUES = [
@@ -97,31 +100,8 @@ class RecipeService
 
     private function saveRecipeImages(array $recipeValidated, Recipe $recipe) : void
     {
-        $filePaths = [];
-
         if (array_key_exists('recipe_photos', $recipeValidated)) {
-            $files = $recipeValidated['recipe_photos'];
-
-            foreach ($files as $file) {
-                do {
-                    $hashedFileName = $file->hashName();
-                    $hashedFilePath = sprintf('%s/%s', self::DEF_RECIPE_IMG_SAVE_PATH, $hashedFileName);
-                } while (Storage::disk()->exists($hashedFilePath));
-
-                $storedFileName = Storage::putFileAs(
-                    self::DEF_RECIPE_IMG_SAVE_PATH,
-                    $file,
-                    $hashedFileName
-                );
-
-                if (Str::startsWith($storedFileName, '/public\/')) {
-                    $storedFileName = Str::replaceFirst('/public\/', '', $storedFileName);
-                } elseif (Str::startsWith($storedFileName, 'public/')) {
-                    $storedFileName = Str::replaceFirst('public/', '', $storedFileName);
-                }
-
-                $filePaths[] = $storedFileName;
-            }
+            $filePaths = $this->storeImages($recipeValidated['recipe_photos'], 'recipes');
         } else {
             $filePaths[] = self::DEF_RECIPE_IMG_PATH;
         }
