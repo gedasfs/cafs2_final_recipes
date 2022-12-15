@@ -8,9 +8,6 @@ use Illuminate\Support\Str;
 
 trait StoreImagesTrait
 {
-
-    // private const DEF_RECIPE_IMG_SAVE_PATH = 'public/images/recipes';
-
     public function storeImages(array|UploadedFile $images, string $directory) : array
     {
         $images = $images instanceof UploadedFile ? [$images] : $images;
