@@ -34,7 +34,7 @@
             </div>
             <x-cmn.input-hidden name="instruction_id[]" value="{{ $instructions['instruction_id'][$i] ?? null }}" />
             <div class="col-12 col-md-11">
-                <x-cmn.floating-textarea name="instruction_description[]" value="{{ $instructions['instruction_description'][$i] }}" class="{{ $errors->get('instruction_description' . $i) ? 'is-invalid' : '' }}" countable maxlength="1000">Aprašymas*</x-cmn.floating-textarea>
+                <x-cmn.floating-textarea name="instruction_description[]" value="{{ $instructions['instruction_description'][$i] }}" class="{{ $errors->get('instruction_description.' . $i) ? 'is-invalid' : '' }}" countable maxlength="1000">Aprašymas*</x-cmn.floating-textarea>
             </div>
             <div class="col-12 col-md-1 text-end">
                 <x-cmn.btn outlined color="secondary" class="px-3 py-2 mb-3" data-btn="removeLine">x</x-cmn.btn>
