@@ -6,7 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-trait StoreImagesTrait
+trait ImageTrait
 {
     public function storeImages(array|UploadedFile $images, string $directory) : array
     {

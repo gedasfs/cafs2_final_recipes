@@ -6,14 +6,13 @@ use App\Models\Image;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Models\Instruction;
-use Illuminate\Support\Str;
 use App\Models\RecipeTimeUnit;
-use App\Traits\StoreImagesTrait;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\ImageTrait;
 
 class RecipeService
 {
-    use StoreImagesTrait;
+    use ImageTrait;
 
     private const DEF_RECIPE_IMG_PATH = 'images/recipes/default-recipe-img.png';
 
