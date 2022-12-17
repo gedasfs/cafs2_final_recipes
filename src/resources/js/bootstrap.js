@@ -1,4 +1,4 @@
-import * as bootstrap from 'bootstrap'
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
 import _ from 'lodash';
 window._ = _;
 
@@ -33,3 +33,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+
+/**
+ * Init all bootstrap tooltips
+ */
+const tooltipsTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+[...tooltipsTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));

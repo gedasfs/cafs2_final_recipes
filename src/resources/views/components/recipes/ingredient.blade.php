@@ -41,32 +41,28 @@
 @if ($maxCount)
     @for ($i = 0; $i < $maxCount; $i++)
         <div class="row justify-content-between align-items-center mb-3 mb-md-0 ms-2 line">
-            <div class="errors">
-                @if (count($errors->get('ingredient_name.*')))
-                    @foreach ($errors->get('ingredient_name.' . $i) as $error)
-                        <div><x-cmn.input-error-msg>{{ $error }}</x-cmn.input-error-msg></div>
-                    @endforeach
-                @endif
-                @if (count($errors->get('ingredient_quantity.*')))
-                    @foreach ($errors->get('ingredient_quantity.' . $i) as $error)
-                        <div><x-cmn.input-error-msg>{{ $error }}</x-cmn.input-error-msg></div>
-                    @endforeach
-                @endif
-                @if (count($errors->get('ingredient_unit.*')))
-                    @foreach ($errors->get('ingredient_unit.' . $i) as $error)
-                        <div><x-cmn.input-error-msg>{{ $error }}</x-cmn.input-error-msg></div>
-                    @endforeach
-                @endif
-            </div>
             <x-cmn.input-hidden name="ingredient_id[]" value="{{ $ingredients['ingredient_id'][$i] ?? null }}" />
             <div class="col-12 col-md-5">
-                <x-cmn.floating-input type="text" name="ingredient_name[]" value="{{ $ingredients['ingredient_name'][$i] }}" class="{{ $errors->get('ingredient_name.' . $i)?'is-invalid':'' }}">Ingredientas*</x-cmn.floating-input>
+                <x-cmn.floating-input
+                    type="text"
+                    name="ingredient_name[]"
+                    value="{{ $ingredients['ingredient_name'][$i] }}"
+                    error="{{ $errors->get('ingredient_name.' . $i)[0] ?? '' }}"
+                >Ingredientas*</x-cmn.floating-input>
             </div>
             <div class="col-12 col-md-3">
-                <x-cmn.floating-input type="text" name="ingredient_quantity[]" value="{{ $ingredients['ingredient_quantity'][$i] }}" class="{{ $errors->get('ingredient_quantity.' . $i)?'is-invalid':'' }}">Kiekis*</x-cmn.floating-input>
+                <x-cmn.floating-input
+                    type="text" name="ingredient_quantity[]"
+                    value="{{ $ingredients['ingredient_quantity'][$i] }}"
+                    error="{{ $errors->get('ingredient_quantity.' . $i)[0] ?? '' }}"
+                >Kiekis*</x-cmn.floating-input>
             </div>
             <div class="col-12 col-md-3">
-                <x-cmn.floating-input type="text" name="ingredient_unit[]" value="{{ $ingredients['ingredient_unit'][$i] }}" class="{{ $errors->get('ingredient_unit.' . $i)?'is-invalid':'' }}">Vienetas*</x-cmn.floating-input>
+                <x-cmn.floating-input
+                    type="text" name="ingredient_unit[]"
+                    value="{{ $ingredients['ingredient_unit'][$i] }}"
+                    error="{{ $errors->get('ingredient_unit.' . $i)[0] ?? '' }}"
+                >Vienetas*</x-cmn.floating-input>
             </div>
             <div class="col-12 col-md-1 text-end">
                 <x-cmn.btn outlined color="secondary" class="px-3 py-2 mb-3" data-btn="removeLine">x</x-cmn.btn>
