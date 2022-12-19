@@ -23,7 +23,7 @@
                 </div>
             @endforeach
             <div class="mt-4">
-                {{ $recipes->links() }}
+                {{ $recipes->appends(request()->query())->links() }}
             </div>
         </article>
     </section>

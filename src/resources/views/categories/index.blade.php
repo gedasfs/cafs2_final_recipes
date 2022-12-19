@@ -10,7 +10,7 @@
                 </div>
             @endforeach
             <div class="mt-4">
-                {{ $categories->links() }}
+                {{ $categories->appends(request()->query())->links() }}
             </div>
         </article>
     </section>
