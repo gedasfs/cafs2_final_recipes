@@ -56,8 +56,7 @@ class StoreRecipeRequest extends FormRequest
             'instruction_description'  => ['required', 'array', 'min:1'],
             'instruction_description.*'  => ['required', 'string'],
 
-            'recipe_photos' => ['nullable', 'array', 'min:1'],
-            'recipe_photos.*' => [File::image()->max(10*1024)],
+            'recipe_photos' => [File::image()->max(10*1024)],
             'ext_url' => ['nullable', 'url'],
         ];
     }

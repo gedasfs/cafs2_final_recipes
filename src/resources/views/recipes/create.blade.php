@@ -211,7 +211,7 @@
                     <x-slot:title>Media</x-slot:title>
                     <div>
                         <x-cmn.input-file
-                            name="recipe_photos[]"
+                            name="recipe_photos"
                             error="{{ $errors->first('recipe_photos') ?? '' }}"
                         >Pasirinkite nuotrauką receptui:</x-cmn.input-file>
                     </div>
