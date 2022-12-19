@@ -143,17 +143,14 @@ class RecipeService
         $recipe = $recipe->load(['user', 'ingredients', 'instructions', 'images']);
         $timeUnit = RecipeTimeUnit::find($recipe->recipe_time_unit_id);
 
-        if (count($recipe->images)) {
-            $recipeImagePath = $recipe->images[0]->path;
-
-            if (!Storage::disk('local')->exists('public/' . $recipeImagePath)) {
-                $recipeImagePath = self::DEF_RECIPE_IMG_PATH;
-            }
-        } else {
-            $recipeImagePath = self::DEF_RECIPE_IMG_PATH;
+        if (count($recipe->images) === 0) {
+            $recipe->images[0] = new Image([
+                'path' => self::DEF_RECIPE_IMG_PATH,
+                'alt_text' => 'recipe-img',
+            ]);
         }
 
-        return compact('recipe', 'timeUnit', 'recipeImagePath');
+        return compact('recipe', 'timeUnit');
     }
 
     public function getPaginatedRecipes(array $filters = [])

@@ -2,7 +2,7 @@
     <section class="container recipe-show-section align-item-center">
         <h1>{{ $recipe->name }}</h1>
         <article>
-            <div class="bg-light rounded px-2 py-4 text-center mb-2">
+            <div class="bg-light rounded px-2 py-4 text-center mb-2 position-relative">
                 <p>{{ $recipe->short_description }}</p>
                 <p class="m-0">Įkėlė <strong class="text-muted">{{ $recipe->user->firstname }} {{ $recipe->user->lastname }}</strong></p>
                 <p class="text-muted m-0">{{ $recipe->created_at->format('Y-m-d') }}</p>
@@ -16,10 +16,10 @@
                         </form>
                     </div>
                 @endcan
+                <x-cmn.link-btn-fav class="position-absolute top-0 start-0 m-2 m-sm-3" />
             </div>
-            <div class="mb-2 position-relative">
-                <img src="{{ asset($recipeImagePath) }}" class="card-img rounded" alt="img-card">
-                <x-cmn.link-btn-fav class="position-absolute top-0 start-0 m-3 m-md-2" />
+            <div class="mb-2">
+                <x-cmn.image-slider :images="$recipe->images" :id="'recipeSlider'.$recipe->id"></x-cmn.image-slider>
             </div>
             <div class="p-4 rounded mb-2">
                 <p class="m-0">{{ $recipe->description }}</p>
