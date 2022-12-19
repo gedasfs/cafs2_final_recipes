@@ -61,19 +61,20 @@ class RecipeService
     {
         if (array_key_exists('recipe_photos', $recipeValidated)) {
             $filePaths = $this->storeImagesInStorage($recipeValidated['recipe_photos'], 'recipes');
-        } else {
-            $filePaths[] = self::DEF_RECIPE_IMG_PATH;
         }
 
-        $images = [];
-        foreach ($filePaths as $path) {
-            $images[] = new Image([
-                'path' => $path,
-                'alt_text' => 'recipe-img',
-            ]);
+        if (!empty($filePaths)) {
+            $images = [];
+            foreach ($filePaths as $path) {
+                $images[] = new Image([
+                    'path' => $path,
+                    'alt_text' => 'recipe-img',
+                ]);
+            }
+
+            $recipe->images()->saveMany($images);
         }
 
-        $recipe->images()->saveMany($images);
     }
 
     public function deleteRecipeImages(array $recipeValidated, Recipe $recipe)
