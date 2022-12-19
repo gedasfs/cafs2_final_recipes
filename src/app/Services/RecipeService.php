@@ -32,6 +32,14 @@ class RecipeService
         $this->saveRecipeIngredients($recipeValidated, $recipe, true);
         $this->saveRecipeInstructions($recipeValidated, $recipe, true);
 
+        if (isset($recipeValidated['recipe_photos'])) {
+            $this->saveRecipeImages($recipeValidated, $recipe);
+        }
+
+        if (isset($recipeValidated['delete_imageable_id'])) {
+            $this->deleteRecipeImages($recipeValidated, $recipe);
+        }
+
         return $recipe;
     }
 
@@ -52,7 +60,7 @@ class RecipeService
     private function saveRecipeImages(array $recipeValidated, Recipe $recipe) : void
     {
         if (array_key_exists('recipe_photos', $recipeValidated)) {
-            $filePaths = $this->storeImages($recipeValidated['recipe_photos'], 'recipes');
+            $filePaths = $this->storeImagesInStorage($recipeValidated['recipe_photos'], 'recipes');
         } else {
             $filePaths[] = self::DEF_RECIPE_IMG_PATH;
         }
@@ -66,6 +74,18 @@ class RecipeService
         }
 
         $recipe->images()->saveMany($images);
+    }
+
+    public function deleteRecipeImages(array $recipeValidated, Recipe $recipe)
+    {
+        if (array_key_exists('delete_imageable_id', $recipeValidated)) {
+            $deletableImages = $recipe->images()->whereIn('id', $recipeValidated['delete_imageable_id'])->get();
+            $this->deleteImagesFromStorage($deletableImages->pluck('path')->all());
+            foreach ($deletableImages as $image) {
+                $image->delete();
+            }
+        }
+
     }
 
     private function saveRecipeIngredients(array $recipeValidated, Recipe $recipe, bool $isUpdate = false) : void

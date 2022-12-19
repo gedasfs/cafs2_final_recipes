@@ -210,10 +210,20 @@
                 <x-recipes.recipe-create-section id="media">
                     <x-slot:title>Media</x-slot:title>
                     <div>
+                        @if (isset($recipe) && $recipe->images->isNotEmpty())
+                            <h6>Recepto nuotraukos:</h6>
+                            <div class="row ">
+                                @foreach ($recipe->images as $image)
+                                    <div class="col-6 col-sm-4 col-md-3">
+                                        <x-recipes.recipe-img-card :src="$image->path" :alt="$image->alt_text" :id="$image->id" :index="$loop->index+1"/>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                         <x-cmn.input-file
                             name="recipe_photos"
                             error="{{ $errors->first('recipe_photos') ?? '' }}"
-                        >Pasirinkite nuotrauką receptui:</x-cmn.input-file>
+                        >Pridėti naują nuotrauką receptui:</x-cmn.input-file>
                     </div>
                     <div>
                         <x-cmn.floating-input

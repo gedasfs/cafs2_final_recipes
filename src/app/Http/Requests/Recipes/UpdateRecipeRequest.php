@@ -5,6 +5,7 @@ namespace App\Http\Requests\Recipes;
 use App\Models\Category;
 use App\Models\RecipeTimeUnit;
 use App\Models\DifficultyLevel;
+use Illuminate\Validation\Rules\File;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRecipeRequest extends FormRequest
@@ -54,6 +55,11 @@ class UpdateRecipeRequest extends FormRequest
 
             'instruction_description'  => ['required', 'array', 'min:1'],
             'instruction_description.*'  => ['required', 'string'],
+
+            'delete_imageable_id' => ['nullable', 'array', 'min:1'],
+            'delete_imageable_id.*' => ['nullable'],
+
+            'recipe_photos' => [File::image()->max(10*1024)],
 
             'ext_url' => ['nullable', 'url'],
         ];

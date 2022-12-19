@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 trait ImageTrait
 {
-    public function storeImages(array|UploadedFile $images, string $directory) : array
+    public function storeImagesInStorage(array|UploadedFile $images, string $directory) : array
     {
         $images = $images instanceof UploadedFile ? [$images] : $images;
 
@@ -41,5 +41,18 @@ trait ImageTrait
         }
 
         return $filePaths;
+    }
+
+    public function deleteImagesFromStorage(array|string $imageFilePaths) : void
+    {
+        $imageFilePaths = is_array($imageFilePaths) ? $imageFilePaths : [$imageFilePaths];
+
+        foreach ($imageFilePaths as $path) {
+            $path = Str::start($path, 'public/');
+
+            if (Storage::exists($path)) {
+                Storage::delete($path);
+            }
+        }
     }
 }
