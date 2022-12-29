@@ -12,6 +12,7 @@
                 enctype="multipart/form-data"
                 method="POST"
                 action="{{ $route }}"
+                autocomplete="off"
                 >
 
                 @if ($update && isset($recipe))

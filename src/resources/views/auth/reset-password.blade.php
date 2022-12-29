@@ -3,7 +3,7 @@
         <x-slot:header class="py-3 text-center">Naujo slaptažodžio nustatymas</x-slot:header>
 
         <div class="m-2">
-            <form method="POST" action=" {{ route('password.update') }}">
+            <form method="POST" action=" {{ route('password.update') }}" autocomplete="off">
                 @csrf
 
                 {{-- Password Reset Token --}}

@@ -3,7 +3,7 @@
         <x-slot:header class="py-3 text-center">Registracija</x-slot:header>
 
         <div class="m-2">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" autocomplete="off">
                 @csrf
 
                 @error('firstname')

@@ -5,7 +5,7 @@
         <x-auth.auth-session-status :status="session('status')" />
 
         <div class="m-2">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}" autocomplete="off">
                 @csrf
 
                 @error('email')
