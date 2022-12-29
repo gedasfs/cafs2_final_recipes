@@ -2,10 +2,17 @@
     <section class="container recipe-show-section align-item-center">
         <h1>{{ $recipe->name }}</h1>
         <article>
-            <div class="bg-light rounded px-2 py-4 text-center mb-2 position-relative">
-                <p>{{ $recipe->short_description }}</p>
-                <p class="m-0">Įkėlė <strong class="text-muted">{{ $recipe->user->firstname }} {{ $recipe->user->lastname }}</strong></p>
-                <p class="text-muted m-0">{{ $recipe->created_at->format('Y-m-d') }}</p>
+            <div class="bg-light rounded px-2 pt-2 pb-4 text-center mb-2">
+                <div class="mb-2 text-end">
+                    <x-cmn.link-btn-fav class="ms-2" title="pridėti prie patikusių"/>
+                    <x-cmn.link-btn-pdf class="ms-2" href="{{ route('pdf.recipe', $recipe->id) }}" target=_blank title="atsisiųsti PDF" />
+                </div>
+                <div>
+                    <p class="px-1 px-md-4">{{ $recipe->short_description }}</p>
+                    <p class="m-0">Įkėlė <strong class="text-muted">{{ $recipe->user->firstname }} {{ $recipe->user->lastname }}</strong></p>
+                    <p class="text-muted m-0">{{ $recipe->created_at->format('Y-m-d') }}</p>
+                </div>
+
                 @can('update', $recipe)
                     <div class="user-actions d-flex justify-content-center">
                         <x-cmn.link-btn class="mt-3 me-2" outlined href="{{ route('recipes.edit', $recipe->id) }}">Redaguoti</x-cmn.link-btn>
@@ -16,7 +23,7 @@
                         </form>
                     </div>
                 @endcan
-                <x-cmn.link-btn-fav class="position-absolute top-0 start-0 m-2 m-sm-3" />
+
             </div>
             <div class="mb-2">
                 <x-cmn.image-slider :images="$recipe->images" :id="'recipeSlider'.$recipe->id"></x-cmn.image-slider>

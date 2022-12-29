@@ -8,6 +8,7 @@ use App\Models\DifficultyLevel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Recipes\RecipeController;
 use App\Http\Controllers\Categories\CategoryController;
+use App\Http\Controllers\Pdf\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/', function () {
     return view('index', compact('recipes', 'categories'));
 })->name('index');
 
+Route::get('/recipes/{recipe}/pdf', [PdfController::class, 'recipePdf'])->name('pdf.recipe');
 Route::resource('/recipes', RecipeController::class);
 Route::resource('/categories', CategoryController::class);
 
