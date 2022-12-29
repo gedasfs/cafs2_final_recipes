@@ -1,4 +1,4 @@
-@props(['id' => false, 'height' => '80px', 'maxlength' => '', 'countable' => false, 'value' => '', 'error' => ''])
+@props(['id' => false, 'height' => '80px', 'maxlength' => '', 'countable' => false, 'value' => '', 'error' => '', 'required' => false])
 
 <div class="form-floating mb-3">
     <textarea
@@ -11,7 +11,8 @@
                 'maxlength' => $maxlength,
             ])->class([
                 'countable' => $countable,
-                'is-invalid' => $error
+                'is-invalid' => $error,
+                'border border-secondary' => !$error && $required,
             ])
         }}
         @if ($error)

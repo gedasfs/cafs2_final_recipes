@@ -1,4 +1,4 @@
-@props(['id' => false, 'name', 'error' => ''])
+@props(['id' => false, 'name', 'error' => '', 'required' => false])
 
 <div class="mb-3">
     <label @class(['form-label'])
@@ -15,7 +15,8 @@
                 'name' => $name,
                 // 'placeholder' => $slot,
             ])->class([
-                'is-invalid' => $error
+                'is-invalid' => $error,
+                'border border-secondary' => !$error && $required,
             ])
         }}
         @if ($error)

@@ -1,11 +1,14 @@
-@props(['id', 'type' => 'text', 'error' => ''])
+@props(['id', 'type' => 'text', 'error' => '', 'required' => false])
 
 <div class="form-floating mb-3">
     <select {{
         $attributes->merge([
             'class' => 'form-select',
             'id' => $id,
-        ])->class(['is-invalid' => $error])
+        ])->class([
+            'is-invalid' => $error,
+            'border border-secondary' => !$error && $required,
+        ])
     }}
     @if ($error)
         data-bs-toggle="tooltip"

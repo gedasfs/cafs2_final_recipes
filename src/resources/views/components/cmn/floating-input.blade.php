@@ -1,4 +1,4 @@
-@props(['id' => false, 'type' => 'text', 'error' => ''])
+@props(['id' => false, 'type' => 'text', 'error' => '', 'required' => false])
 
 <div class="form-floating mb-3">
     <input
@@ -9,7 +9,8 @@
                 'id' => $id,
                 'placeholder' => $slot,
             ])->class([
-                'is-invalid' => $error
+                'is-invalid' => $error,
+                'border border-secondary' => !$error && $required
             ])
         }}
         @if ($error)

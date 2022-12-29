@@ -29,7 +29,8 @@
                             id="name"
                             value="{{ old('name', $recipe->name ?? '') }}"
                             error="{{ $errors->first('name') ?? '' }}"
-                        >Recepto pavadinimas*</x-cmn.floating-input>
+                            required
+                        >Recepto pavadinimas</x-cmn.floating-input>
                     </div>
 
                     <div>
@@ -62,8 +63,9 @@
                             name="category_id"
                             id="category"
                             error="{{ $errors->first('category_id') ?? '' }}"
+                            required
                         >
-                            Kategorija*
+                            Kategorija
                             <x-slot:firstSelectName>Pasirinkite patiekalo kategoriją...</x-slot:firstSelectName>
                             <x-slot:options>
                                 @foreach ($categories as $cat)
@@ -85,8 +87,9 @@
                             name="difficulty_level_id"
                             id="difficultyLevelId"
                             error="{{ $errors->first('difficulty_level_id') ?? '' }}"
+                            required
                         >
-                            Sudėtingumas*
+                            Sudėtingumas
                             <x-slot:firstSelectName>Pasirinkite sudėtingumo lygį...</x-slot:firstSelectName>
                             <x-slot:options>
                                 @foreach ($difficultyLevels as $level)
@@ -123,7 +126,8 @@
                                 id="prepTime"
                                 value="{{ old('prep_time', $recipe->prep_time ?? '') }}"
                                 error="{{ $errors->first('prep_time') ?? '' }}"
-                            >Paruošimo laikas*</x-cmn.floating-input>
+                                required
+                            >Paruošimo laikas</x-cmn.floating-input>
                         </div>
                         <div class="col-12 col-md-3">
                             <x-cmn.floating-input
@@ -131,7 +135,8 @@
                                 id="cookTime"
                                 value="{{ old('cook_time', $recipe->cook_time ?? '') }}"
                                 error="{{ $errors->first('cook_time') ?? '' }}"
-                            >Gaminimo laikas*</x-cmn.floating-input>
+                                required
+                            >Gaminimo laikas</x-cmn.floating-input>
                         </div>
                         <div class="col-12 col-md-3">
                             <x-cmn.floating-input
@@ -139,15 +144,17 @@
                                 id="totalTime"
                                 value="{{ old('total_time', $recipe->total_time ?? '') }}"
                                 error="{{ $errors->first('total_time') ?? '' }}"
-                            >Viso laikas*</x-cmn.floating-input>
+                                required
+                            >Viso laikas</x-cmn.floating-input>
                         </div>
                         <div class="col-12 col-md-3">
                             <x-cmn.floating-select
                                 name="recipe_time_unit_id"
                                 id="recipeTimeUnitId"
                                 error="{{ $errors->first('recipe_time_unit_id') ?? '' }}"
+                                required
                             >
-                                Laiko vienetas*
+                                Laiko vienetas
                                 <x-slot:firstSelectName>Pasirinkite vnt...</x-slot:firstSelectName>
                                 <x-slot:options>
                                     @foreach ($timeUnits as $unit)
@@ -172,7 +179,8 @@
                             id="servings"
                             value="{{ old('servings', $recipe->servings ?? '') }}"
                             error="{{ $errors->first('servings') ?? '' }}"
-                        >Porcijų kiekis*</x-cmn.floating-input>
+                            required
+                        >Porcijų kiekis</x-cmn.floating-input>
                     </div>
                 </x-recipes.recipe-create-section>
 
@@ -183,7 +191,7 @@
                         @if (isset($recipe))
                             <x-recipes.ingredient :$recipe/>
                         @else
-                            <x-recipes.ingredient/>
+                            <x-recipes.ingredient />
                         @endif
                     </div>
 
