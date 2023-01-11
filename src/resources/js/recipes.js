@@ -88,4 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteForm = document.querySelector('.delete-form');
     deleteForm.addEventListener('submit', confirmDelete);
 
+
+    const printBtn = document.querySelector('#printBtn');
+
+    printBtn.addEventListener('click', event => {
+        const printableContent = document.querySelector('#printable').innerHTML;
+        const originalContent = document.body.innerHTML;
+
+        document.body.innerHTML = printableContent;
+        window.print();
+        document.body.innerHTML = originalContent;
+    });
 });

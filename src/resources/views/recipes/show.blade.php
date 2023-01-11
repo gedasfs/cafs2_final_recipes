@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <section class="container recipe-show-section align-item-center">
+    <section class="container recipe-show-section align-item-center" id="printable">
         <h1>{{ $recipe->name }}</h1>
         <article>
             <div class="my-2 pt-3 pb-2 px-2 px-md-3 bg-light rounded text-center">
@@ -19,6 +19,7 @@
                         <x-cmn.form-delete action="{{ route('recipes.destroy', $recipe->id) }}" />
                     @endcan
                     <x-cmn.link-btn-pdf href="{{ route('pdf.recipe', $recipe->id) }}" target="_blank" />
+                    <x-cmn.btn outlined id="printBtn">Print</x-cmn.btn>
                 </div>
             </div>
             <div class="my-2">
