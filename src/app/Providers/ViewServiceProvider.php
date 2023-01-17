@@ -26,7 +26,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['index', 'recipes.index' , 'recipes.create', 'recipes.show'], function ($view) {
+        view()->composer(['index', 'recipes.index' , 'recipes.create', 'recipes.show', 'categories.show'], function ($view) {
             $timeUnits = RecipeTimeUnit::all();
             $difficultyLevels = DifficultyLevel::all();
 

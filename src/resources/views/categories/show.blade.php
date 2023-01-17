@@ -1,8 +1,8 @@
 <x-layouts.main>
-    <section class="py-2 bg-light">
-        <h1 class="text-center text-secondary my-4">NAUJAUSI RECEPTAI</h1>
+    <section>
+        <h1>Kategorija: {{ $category->name }}</h1>
         <article class="row justify-content-center">
-            @foreach ($recipes as $recipe)
+            @foreach ($category->recipes as $recipe)
                 <div class="col-12 col-md-6 mb-3">
                     <x-recipes.card-recipe :recipeId="$recipe->id">
                         @php
@@ -21,19 +21,10 @@
                     </x-recipes.card-recipe>
                 </div>
             @endforeach
+            @unless (count($category->recipes))
+                <div>Kategorijoje receptų nerasta</div>
+            @endunless
         </article>
     </section>
 
-    <section class="py-2">
-        <h1 class="text-center text-secondary my-4">NAUJAUSIOS KATEGORIJOS</h1>
-        <article class="row justify-content-center">
-            @foreach ($categories as $category)
-                <div class="col-6 col-lg-3 mb-3 d-flex justify-content-center">
-                    <x-categories.card-category class="bg-light" :categoryId="$category->id">
-                        <x-slot:cardTitle>{{ $category->name }}</x-slot:cardTitle>
-                    </x-categories.card-category>
-                </div>
-            @endforeach
-        </article>
-    </section>
 </x-layouts.main>

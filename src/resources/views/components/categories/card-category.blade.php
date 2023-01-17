@@ -8,7 +8,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ $cardTitle }}</h5>
         <div class="d-flex">
-            <x-cmn.link-btn-arrow-e href="{{-- route('categories.show',$categoryId) --}}" outlined class="ms-auto"/>
+            <x-cmn.link-btn-arrow-e href="{{ route('categories.show', $categoryId) }}" outlined class="ms-auto"/>
         </div>
     </div>
 </div>

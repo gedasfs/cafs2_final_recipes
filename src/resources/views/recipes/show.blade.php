@@ -31,7 +31,7 @@
             <div class="row mt-2 bg-light p-2 p-sm-3 rounded mb-2 text-center">
                 <div class="col-12 col-sm-4">
                     <p class="m-0">Kategorija:</p>
-                    <p class="mb-2 m-sm-0"><strong class="text-primary">{{ $recipe->category->name }}</strong></p>
+                    <x-cmn.link class="mb-2 m-sm-0" href="{{ route('categories.show', $recipe->category->id) }}"><strong><i>{{ $recipe->category->name }}</i></strong></x-cmn.link>
                 </div>
                 <div class="col-12 col-sm-4">
                     <p class="m-0">Sudėtingumas:</p>

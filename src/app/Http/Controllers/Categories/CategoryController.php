@@ -54,7 +54,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $category = $category->load('recipes', 'image');
+
+        // TODO check if category has image. If not, load default
+
+        return view('categories.show', compact('category'));
     }
 
     // /**
