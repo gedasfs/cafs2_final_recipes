@@ -8,7 +8,7 @@
                     <p class="m-0">Įkėlė <strong class="text-muted">{{ $recipe->user->firstname }} {{ $recipe->user->lastname }}</strong></p>
                     <p class="text-muted m-0">{{ $recipe->created_at->format('Y-m-d') }}</p>
                 </div>
-                <div class="user-actions mt-3 d-flex gap-2 justify-content-center align-items-center">
+                <div class="user-actions mt-3 d-flex gap-3 gap-md-2 justify-content-center align-items-center">
                     @auth
                         <x-cmn.link-btn-fav />
                     @endauth
@@ -19,7 +19,7 @@
                         <x-cmn.form-delete action="{{ route('recipes.destroy', $recipe->id) }}" />
                     @endcan
                     <x-cmn.link-btn-pdf href="{{ route('pdf.recipe', $recipe->id) }}" target="_blank" />
-                    <x-cmn.btn outlined id="printBtn">Print</x-cmn.btn>
+                    <x-cmn.btn-print></x-cmn.btn-print>
                 </div>
             </div>
             <div class="my-2">
