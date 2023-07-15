@@ -7,6 +7,7 @@ This is a recipes website app, build as a final project for CAFS2 course (2022).
 - Set database connection parameters in .env files (docker/.env/env and src/.env)
 - Run docker compose (`docker compose up`);
 - Inside container, install composer dependencies (`composer install`);
+- Create/update .env file inside src folder;
 - Generate app key (`php artisan key:generate`);
 - Run migrations (`php artisan migrate`);
 - Create symlink for images (`php artisan storage:link`);
